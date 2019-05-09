@@ -1,11 +1,13 @@
-import React, {Component} from 'react'
-import Color from '../Color/Color'
+import React, {Component} from 'react';
+import Color from '../Color/Color';
+import PaletteForm from '../PaletteForm/PaletteForm';
 
 export class Palette extends Component {
   constructor() {
     super()
     this.state = {
       colors: [],
+      showForm: false
     }
   }
 
@@ -39,14 +41,24 @@ export class Palette extends Component {
   renderColors = () => {
     const { colors } = this.state
     return colors.map(color => {
-      return <Color key={color} color={color} />
+      return <Color key={color} color={color} savePalette={this.savePalette}/>
     })
-
   }
+
+  savePalette = () => {
+    console.log(this.state.colors)
+    this.setState({ showForm: true })
+  }
+
   render() {
+    const { showForm, colors } = this.state;
     return(
       <div>
+        <button onClick={this.savePalette}>Save Palete</button>
         {this.renderColors()}
+        {showForm &&
+          <PaletteForm {...colors}/>
+        }
       </div>
     )
   }
