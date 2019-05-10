@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import Palette from '../Palette/Palette'
+import Palette from '../../Palette/Palette'
+import { fetchProjects } from '../../thunks/fetchProjects'
+import { connect } from 'react-redux'
 
 export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      projects: [],
-      palettes: []
-    }
-  }
 
-  componentDidMount = async () => {
-    const url = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects';
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data)
+  componentDidMount = () => {
+    this.props.fetchProjects()
   }
 
   render() {
@@ -35,4 +27,8 @@ export class App extends Component {
   }
 }
 
-export default App;
+export const mapDispatchToProps = (dispatch) => ({
+  fetchProjects: () => dispatch(fetchProjects())
+})
+
+export default connect(null, mapDispatchToProps)(App);
