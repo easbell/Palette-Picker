@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export const Color = ({color}) => {
+
   return (
-    <div>
+    <div style={{backgroundColor: color}} className='color'>
       {color}
     </div>
   )

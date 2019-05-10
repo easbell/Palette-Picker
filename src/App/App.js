@@ -12,9 +12,10 @@ export class App extends Component {
   }
 
   componentDidMount = async () => {
-    const url = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects'
-    const response = await fetch(url)
-    const data = await response.json()
+    const url = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects';
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data)
   }
 
   render() {
