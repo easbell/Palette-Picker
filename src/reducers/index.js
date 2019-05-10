@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import hasErrored from './hasErrored'
 import isLoading from './isLoading'
-import setProjects from './setProjects'
+import projectsReducer from './projectsReducer'
 
 const rootReducer = combineReducers({
   hasErrored,
   isLoading,
-  setProjects
+  projectsReducer
 })
 
 export default rootReducer
