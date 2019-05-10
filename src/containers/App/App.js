@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Palette from '../Palette/Palette'
+import Palette from '../../Palette/Palette'
 
 export class App extends Component {
   constructor() {
