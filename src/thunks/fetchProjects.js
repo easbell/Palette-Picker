@@ -1,17 +1,16 @@
 import { isLoading, setProjects, hasErrored } from '../actions'
 
-export const fetchProjects = () => {
-  const url = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects';
+export const fetchProjects = (url, action, options) => {
   return async (dispatch) => {
     try {
       dispatch(isLoading(true))
-      const response = await fetch(url)
+      const response = await fetch(url, options)
       if(!response.ok) {
         throw Error(response.statusText)
       }
-      const projects = await response.json()
+      const data = await response.json()
       dispatch(isLoading(false))
-      dispatch(setProjects(projects))
+      dispatch(action(data))
     } catch (error) {
       dispatch(hasErrored(error.message))
     }
