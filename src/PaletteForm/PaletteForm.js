@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { addProject, setProjects } from '../actions';
+import { connect } from 'react-redux';
+import { handleFetch } from '../thunks/handleFetch';
 
 export class PaletteForm extends Component {
   constructor() {
@@ -16,8 +19,8 @@ export class PaletteForm extends Component {
   }
 
   handleSubmit = async (e) => {
-    const { projectName } = this.state; 
     e.preventDefault();
+    const { projectName } = this.state;
     const url = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects/'
     const optionsObject = {
       method: 'POST',
@@ -26,9 +29,8 @@ export class PaletteForm extends Component {
         'Content-Type': 'application/json'
       }
     }
-    const response = await fetch(url, optionsObject);
-    const data = await response;
-    console.log(data)
+    await this.props.handleFetch(url, addProject, optionsObject);
+    await this.props.handleFetch(url, setProjects);
   }
 
   render() {
@@ -53,4 +55,8 @@ export class PaletteForm extends Component {
   }
 }
 
-export default PaletteForm
+export const mapDispatchToProps = (dispatch) => ({
+  handleFetch: (url, action, options) => dispatch(handleFetch(url, action, options))
+})
+
+export default connect(null, mapDispatchToProps)(PaletteForm)

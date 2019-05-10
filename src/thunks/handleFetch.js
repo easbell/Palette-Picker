@@ -1,6 +1,6 @@
-import { isLoading, setProjects, hasErrored } from '../actions'
+import { isLoading, hasErrored } from '../actions'
 
-export const fetchProjects = (url, action, options) => {
+export const handleFetch = (url, action, options) => {
   return async (dispatch) => {
     try {
       dispatch(isLoading(true))
