@@ -95,7 +95,7 @@ export class PaletteForm extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  projects: state.projectsReducer
+  projects: state.projects
 })
 
 export const mapDispatchToProps = (dispatch) => ({
