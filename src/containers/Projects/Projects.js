@@ -1,20 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class Projects extends Component {
-  constructor() {
-    super()
-    this.state = {
-
-    }
-  }
-
-  render() {
+export const Projects = () => {
     return(
       <div>
         Projects
       </div>
     )
-  }
 }
 
 export default Projects
