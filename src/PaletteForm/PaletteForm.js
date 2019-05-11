@@ -24,7 +24,7 @@ export class PaletteForm extends Component {
     await this.addProject()
     this.addPalette()
   }
-
+  
   addProject = async () => {
     const { projectName } = this.state;
     const url = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects/'
@@ -38,7 +38,7 @@ export class PaletteForm extends Component {
     await this.props.handleFetch(url, addProject, optionsObject);
     await this.props.handleFetch(url, setProjects);
   }
-
+  
   addPalette = async (projectId) => {
     const { paletteName } = this.state
     const { projects, colors } = this.props
@@ -59,6 +59,7 @@ export class PaletteForm extends Component {
       }
     }
     await this.props.handleFetch(url, addPalette, optionsObject)
+    this.props.savePalette(false);
   }
 
   showProjects = () => {
