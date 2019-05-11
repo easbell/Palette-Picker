@@ -1,4 +1,4 @@
-const projectsReducer = (state=[], action) => {
+const projects = (state=[], action) => {
   switch(action.type) {
     case 'SET_PROJECTS': 
       return action.projects
@@ -9,4 +9,4 @@ const projectsReducer = (state=[], action) => {
   }
 }
 
-export default projectsReducer
+export default projects
