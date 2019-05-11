@@ -4,6 +4,8 @@ import Palette from '../../Palette/Palette';
 import { handleFetch } from '../../thunks/handleFetch';
 import { connect } from 'react-redux';
 import { setProjects, setPalettes } from '../../actions';
+import { Route, Switch, Link, NavLink } from 'react-router-dom'
+import Projects from '../../containers/Projects/Projects'
 
 export class App extends Component {
   componentDidMount = () => {
@@ -17,11 +19,29 @@ export class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1>Palette Picker</h1>
+          <Link to='/'>
+            <h1>Palette Picker</h1>
+          </Link>
           {/* generate button */}
-          {/* projects button */}
+          <NavLink
+            exact to='/my-projects'
+          >
+            My Projects
+          </NavLink>
         </header>
-        <Palette />
+        <div>
+          <Switch>
+            <Route
+              exact path='/'
+              render={() => <Palette />}
+            />
+            <Route 
+              exact path='/my-projects'
+              render={() => <Projects />}
+            />
+          </Switch>
+        </div>
+        
         <div>
           {/* save palette */}
         </div>
