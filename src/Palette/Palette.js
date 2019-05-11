@@ -42,13 +42,11 @@ export class Palette extends Component {
 
   lockColor = (color) => {
     const { lockedColors } = this.state;
-    console.log('lockedcolors', lockedColors)
     if(!lockedColors.includes(color)) {
       this.setState({ lockedColors: [...lockedColors, color]})
     } else {
       const newLocked = lockedColors.filter(lockedColor =>  lockedColor !== color)
       this.setState({ lockedColors: newLocked })      
-      console.log('newlocked', newLocked)
     }
   }
 
