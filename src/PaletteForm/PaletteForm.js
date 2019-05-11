@@ -39,10 +39,10 @@ export class PaletteForm extends Component {
     await this.props.handleFetch(url, setProjects);
   }
 
-  addPalette = async () => {
+  addPalette = async (projectId) => {
     const { paletteName } = this.state
     const { projects, colors } = this.props
-    const id = projects[projects.length -1].id
+    const id = projectId || projects[projects.length -1].id
     const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${id}/palettes/`
     const optionsObject = {
       method: 'POST',
@@ -64,7 +64,7 @@ export class PaletteForm extends Component {
   showProjects = () => {
     const { projects } = this.props;
     return projects.map(project => {
-      return <Dropdown.Item key={project.id}>{project.name}</Dropdown.Item>
+      return <Dropdown.Item onClick={() => {this.addPalette(project.id)}} key={project.id}>{project.name}</Dropdown.Item>
     })
   }
 
