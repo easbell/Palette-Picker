@@ -29,4 +29,4 @@ export class Color extends Component {
   }
 }
 
-export default Color
+export default Color;
