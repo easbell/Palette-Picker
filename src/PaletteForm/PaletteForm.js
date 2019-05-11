@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { addProject, setProjects, addPalette } from '../actions';
 import { connect } from 'react-redux';
 import { handleFetch } from '../thunks/handleFetch';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 export class PaletteForm extends Component {
   constructor() {
@@ -22,7 +24,7 @@ export class PaletteForm extends Component {
     await this.addProject()
     this.addPalette()
   }
-
+  
   addProject = async () => {
     const { projectName } = this.state;
     const url = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects/'
@@ -36,11 +38,11 @@ export class PaletteForm extends Component {
     await this.props.handleFetch(url, addProject, optionsObject);
     await this.props.handleFetch(url, setProjects);
   }
-
-  addPalette = async () => {
+  
+  addPalette = async (projectId) => {
     const { paletteName } = this.state
     const { projects, colors } = this.props
-    const id = projects[projects.length -1].id
+    const id = projectId || projects[projects.length -1].id
     const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${id}/palettes/`
     const optionsObject = {
       method: 'POST',
@@ -57,6 +59,14 @@ export class PaletteForm extends Component {
       }
     }
     await this.props.handleFetch(url, addPalette, optionsObject)
+    this.props.savePalette(false);
+  }
+
+  showProjects = () => {
+    const { projects } = this.props;
+    return projects.map(project => {
+      return <Dropdown.Item onClick={() => {this.addPalette(project.id)}} key={project.id}>{project.name}</Dropdown.Item>
+    })
   }
 
   render() {
@@ -69,6 +79,9 @@ export class PaletteForm extends Component {
           value={this.state.paletteName}
           onChange={this.handleChange}
         />
+        <DropdownButton id="dropdown-basic-button" title="Saved Projects">
+          {this.showProjects()}
+        </DropdownButton>
         <input 
           placeholder='Name this project' 
           name='projectName'
