@@ -1,14 +1,3 @@
-// it('shoud have a type of STORE_INTRO', () => {
-//   const intro = 'introduction'
-//   const expectedAction = {
-//     type: 'STORE_INTRO',
-//     intro
-//   }
-//   const result = actions.storeIntro(intro)
-//   expect(result).toEqual(expectedAction)
-// })
-
-
 import * as actions from '../actions'
 
 describe('actions', () => {
