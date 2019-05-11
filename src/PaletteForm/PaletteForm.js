@@ -4,13 +4,15 @@ import { connect } from 'react-redux';
 import { handleFetch } from '../thunks/handleFetch';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import './PaletteForm.css';
 
 export class PaletteForm extends Component {
   constructor() {
     super();
     this.state = {
       paletteName: '',
-      projectName: ''
+      projectName: '',
+      newProject: false
     }
   }
 
@@ -71,6 +73,10 @@ export class PaletteForm extends Component {
     })
   }
 
+  newProject = () => {
+    this.setState({ newProject: true })
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -82,14 +88,18 @@ export class PaletteForm extends Component {
           onChange={this.handleChange}
         />
         <DropdownButton id="dropdown-basic-button" title="Saved Projects">
+          <Dropdown.Item class="dropdown-item" onClick={this.newProject}>Add new project</Dropdown.Item>
+          <div class="dropdown-divider"></div>
           {this.showProjects()}
         </DropdownButton>
-        <input 
-          placeholder='Name this project' 
-          name='projectName'
-          value={this.state.projectName}
-          onChange={this.handleChange}
-        />
+        { this.state.newProject &&
+          <input 
+            placeholder='Name this project' 
+            name='projectName'
+            value={this.state.projectName}
+            onChange={this.handleChange}
+          />
+        }
         <button type='submit'>Save palette & project</button>
       </form>
     )
