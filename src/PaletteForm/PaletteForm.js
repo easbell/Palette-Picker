@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { addProject, setProjects, addPalette } from '../actions';
 import { connect } from 'react-redux';
 import { handleFetch } from '../thunks/handleFetch';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 export class PaletteForm extends Component {
   constructor() {
@@ -59,6 +61,13 @@ export class PaletteForm extends Component {
     await this.props.handleFetch(url, addPalette, optionsObject)
   }
 
+  showProjects = () => {
+    const { projects } = this.props;
+    return projects.map(project => {
+      return <Dropdown.Item key={project.id}>{project.name}</Dropdown.Item>
+    })
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -69,6 +78,9 @@ export class PaletteForm extends Component {
           value={this.state.paletteName}
           onChange={this.handleChange}
         />
+        <DropdownButton id="dropdown-basic-button" title="Saved Projects">
+          {this.showProjects()}
+        </DropdownButton>
         <input 
           placeholder='Name this project' 
           name='projectName'
