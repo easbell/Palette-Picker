@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addProject, setProjects, addPalette } from '../actions';
+import { addProject, setProjects, addPalette, setPalettes } from '../actions';
 import { connect } from 'react-redux';
 import { handleFetch } from '../thunks/handleFetch';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -44,6 +44,7 @@ export class PaletteForm extends Component {
     const { projects, colors } = this.props
     const id = projectId || projects[projects.length -1].id
     const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${id}/palettes/`
+    const allPalettesUrl = process.env.REACT_APP_BACKEND_URL + `api/v1/palettes/`    
     const optionsObject = {
       method: 'POST',
       body: JSON.stringify({
@@ -60,6 +61,7 @@ export class PaletteForm extends Component {
     }
     await this.props.handleFetch(url, addPalette, optionsObject)
     this.props.savePalette(false);
+    this.props.handleFetch(allPalettesUrl, setPalettes);
   }
 
   showProjects = () => {
