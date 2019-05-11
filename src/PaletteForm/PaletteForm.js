@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { addProject, setProjects, addPalette } from '../actions';
+import { addProject, setProjects, addPalette, setPalettes } from '../actions';
 import { connect } from 'react-redux';
 import { handleFetch } from '../thunks/handleFetch';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import './PaletteForm.css';
 
 export class PaletteForm extends Component {
   constructor() {
     super();
     this.state = {
       paletteName: '',
-      projectName: ''
+      projectName: '',
+      newProject: false
     }
   }
 
@@ -44,6 +46,7 @@ export class PaletteForm extends Component {
     const { projects, colors } = this.props
     const id = projectId || projects[projects.length -1].id
     const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${id}/palettes/`
+    const allPalettesUrl = process.env.REACT_APP_BACKEND_URL + `api/v1/palettes/`    
     const optionsObject = {
       method: 'POST',
       body: JSON.stringify({
@@ -60,6 +63,7 @@ export class PaletteForm extends Component {
     }
     await this.props.handleFetch(url, addPalette, optionsObject)
     this.props.savePalette(false);
+    this.props.handleFetch(allPalettesUrl, setPalettes);
   }
 
   showProjects = () => {
@@ -67,6 +71,10 @@ export class PaletteForm extends Component {
     return projects.map(project => {
       return <Dropdown.Item onClick={() => {this.addPalette(project.id)}} key={project.id}>{project.name}</Dropdown.Item>
     })
+  }
+
+  newProject = () => {
+    this.setState({ newProject: true })
   }
 
   render() {
@@ -80,14 +88,18 @@ export class PaletteForm extends Component {
           onChange={this.handleChange}
         />
         <DropdownButton id="dropdown-basic-button" title="Saved Projects">
+          <Dropdown.Item class="dropdown-item" onClick={this.newProject}>Add new project</Dropdown.Item>
+          <div class="dropdown-divider"></div>
           {this.showProjects()}
         </DropdownButton>
-        <input 
-          placeholder='Name this project' 
-          name='projectName'
-          value={this.state.projectName}
-          onChange={this.handleChange}
-        />
+        { this.state.newProject &&
+          <input 
+            placeholder='Name this project' 
+            name='projectName'
+            value={this.state.projectName}
+            onChange={this.handleChange}
+          />
+        }
         <button type='submit'>Save palette & project</button>
       </form>
     )
