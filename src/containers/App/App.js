@@ -3,12 +3,14 @@ import './App.css';
 import Palette from '../../Palette/Palette';
 import { handleFetch } from '../../thunks/handleFetch';
 import { connect } from 'react-redux';
-import { setProjects } from '../../actions';
+import { setProjects, setPalettes } from '../../actions';
 
 export class App extends Component {
   componentDidMount = () => {
-  const url = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects';
-  this.props.handleFetch(url, setProjects)
+  const allProjects = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects';
+  const allPalettes = process.env.REACT_APP_BACKEND_URL + 'api/v1/palettes';
+  this.props.handleFetch(allProjects, setProjects)
+  this.props.handleFetch(allPalettes, setPalettes)
   }
 
   render() {
