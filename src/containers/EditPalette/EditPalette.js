@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import '../../components/PaletteDisplay/PaletteDisplay.css'
-// import handleFetch from '../../thunks/handleFetch'
 import { setPalettes } from '../../actions'
+import { deletePaletteBE } from '../../helpers/apiCalls'
 
 export const EditPalette = (props) => {
   const { id, palette_name, color_1, color_2, color_3, color_4, color_5 } = props.palette
@@ -13,7 +13,7 @@ export const EditPalette = (props) => {
       return palette.id !== id
     })
     props.setPalettes(updatedPalettes)
-    //delete the palette from the BE
+    deletePaletteBE(id)
   }
 
   return(
