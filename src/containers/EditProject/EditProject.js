@@ -14,6 +14,9 @@ export const EditProject = (props) => {
     <div className='project-card edit-project-card'>
       <h2 className='project-name'>{name}</h2>
       {palettes}
+      <div className='delete-btn-container'>
+        <button className='delete-project'>Delete Project</button>
+      </div>
     </div>
   )
 }

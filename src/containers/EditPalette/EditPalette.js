@@ -18,7 +18,7 @@ export const EditPalette = ({palette}) => {
             <div style={{backgroundColor: color_5}} className='display-color'></div>
           </div>
         </div>
-        <div className='delete-btn'><i class="far fa-trash-alt"></i></div>
+        <div className='delete-palette'><i class="far fa-trash-alt"></i></div>
       </div>
     )
 }
