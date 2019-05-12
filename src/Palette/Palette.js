@@ -14,14 +14,13 @@ export class Palette extends Component {
   }
 
   componentDidMount() {
-    const colors = this.setColors()
-    this.setState({colors})
+    this.setColors()
   }
-
+  
   setColors = () => {
     let colors = [0, 0, 0, 0, 0]
     let randomColor;
-    return colors.map(color => {
+    colors = colors.map(color => {
       randomColor = this.createColors()
       if(!colors.includes(randomColor)) {
         return randomColor
@@ -29,6 +28,7 @@ export class Palette extends Component {
         return this.createColors()
       }
     })
+    this.setState({colors})
   }
 
   createColors = () => {
@@ -66,6 +66,7 @@ export class Palette extends Component {
     return(
       <div>
         <button onClick={() => this.savePalette(true)}>Save Palete</button>
+        <button onClick={this.setColors} >New Palette</button>
         <div className='palette'>
           {this.renderColors()}
         </div>
