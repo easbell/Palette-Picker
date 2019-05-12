@@ -9,9 +9,9 @@ export const EditProject = (props) => {
     return palette.project_id === id}).map(palette => {
       return <EditPalette key={palette.id} palette={palette}/>
     })
-    
+
   return (
-    <div className='project-card'>
+    <div className='project-card edit-project-card'>
       <h2 className='project-name'>{name}</h2>
       {palettes}
     </div>
