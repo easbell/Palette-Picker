@@ -16,6 +16,7 @@
 }
 
 .project-name {
+  color: #444;
   border-bottom: solid #ddd 2px;
   padding: 0px 0px 10px;
   font-size: 1.5rem;
@@ -40,4 +41,9 @@
   border: none;
   text-decoration: none;
   border-radius: 4px;
+}
+
+.delete-project:hover {
+  background-color: #ea4c88ad;
+  transition: all .2s ease;
 }
