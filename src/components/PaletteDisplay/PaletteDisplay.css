@@ -4,17 +4,19 @@
   display: flex;
   justify-content: space-between;
   box-shadow: 0 0px 2px rgba(0,0,0,0.20);
+  margin: 10px 0px;
+  padding: 10px;
 }
 
 .palette-card,
 .delete-palette {
-  padding: 10px;
-  margin: 10px 0px;
   height: 50px;
 }
 
 .delete-palette {
   font-size: 1.25rem;
+  margin: auto;
+  padding: 10px 0;
 }
 
 .palette-name {
