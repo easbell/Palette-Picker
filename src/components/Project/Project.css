@@ -1,0 +1,22 @@
+.project-card {
+  border: solid pink 2px;
+  width: 30%;
+  margin: 10px;
+  align-items: space-between;
+  border-radius: 10px;
+  background: #f4f4f4;
+  color: #444;
+  text-align: left;
+  padding: 20px;
+}
+
+.project-name {
+  border-bottom: solid #ddd 2px;
+}
+
+.palette-display {
+  background: #fff;
+  padding: 6px;
+  margin: 6px 0px;
+  border-radius: 5px;
+}
