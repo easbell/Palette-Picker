@@ -1,6 +1,7 @@
 import React from 'react'
 import Project from '../../components/Project/Project'
 import { connect } from 'react-redux'
+import './Projects.css'
 
 export const Projects = (props) => {
     
@@ -9,7 +10,7 @@ export const Projects = (props) => {
     })
     
     return(
-      <div>
+      <div className='projects-container'>
         {projects}
       </div>
     )

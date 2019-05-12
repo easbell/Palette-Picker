@@ -1,0 +1,43 @@
+.project-card {
+  width: 40%;
+  margin: 10px;
+  align-items: space-between;
+  border-radius: 10px;
+  background: #f4f4f4;
+  color: #444;
+  text-align: left;
+  padding: 20px;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.20);
+}
+
+.edit-project-card {
+  width: 80%;
+  margin: auto;
+}
+
+.project-name {
+  border-bottom: solid #ddd 2px;
+  padding: 0px 0px 10px;
+  font-size: 1.5rem;
+}
+
+.delete-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 30px 0px 0px;
+}
+
+.delete-project {
+  background: #ea4c88;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: .02em;
+  line-height: 17px;
+  vertical-align: middle;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  border-radius: 4px;
+}

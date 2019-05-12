@@ -4,8 +4,9 @@ import Palette from '../../Palette/Palette';
 import { handleFetch } from '../../thunks/handleFetch';
 import { connect } from 'react-redux';
 import { setProjects, setPalettes } from '../../actions';
-import { Route, Switch, Link, NavLink } from 'react-router-dom'
+import { Route, Switch, Link, NavLink, withRouter } from 'react-router-dom'
 import Projects from '../../containers/Projects/Projects'
+import EditProject from '../EditProject/EditProject'
 
 export class App extends Component {
   componentDidMount = () => {
@@ -13,6 +14,16 @@ export class App extends Component {
   const allPalettes = process.env.REACT_APP_BACKEND_URL + 'api/v1/palettes';
   this.props.handleFetch(allProjects, setProjects)
   this.props.handleFetch(allPalettes, setPalettes)
+  }
+
+  findProject = ({ match }) => {
+    const foundProject = this.props.projects.find(project => project.id == match.params.id)
+    
+    if(!foundProject) {
+      return '404 Project not found'
+    } else {
+      return <EditProject foundProject={foundProject} />
+    }
   }
 
   render() {
@@ -39,6 +50,10 @@ export class App extends Component {
               exact path='/my-projects'
               render={() => <Projects />}
             />
+            <Route 
+              exact path='/my-projects/:id'
+              render={this.findProject}
+            />
           </Switch>
         </div>
         
@@ -50,8 +65,12 @@ export class App extends Component {
   }
 }
 
+export const mapStateToProps = (state) => ({
+  projects: state.projects
+})
+
 export const mapDispatchToProps = (dispatch) => ({
   handleFetch: (url, action) => dispatch(handleFetch(url, action))
 })
 
-export default connect(null, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
