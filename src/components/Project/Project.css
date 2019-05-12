@@ -1,6 +1,5 @@
 .project-card {
-  border: solid pink 2px;
-  width: 30%;
+  width: 40%;
   margin: 10px;
   align-items: space-between;
   border-radius: 10px;
@@ -8,15 +7,11 @@
   color: #444;
   text-align: left;
   padding: 20px;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.20);
 }
 
 .project-name {
   border-bottom: solid #ddd 2px;
-}
-
-.palette-display {
-  background: #fff;
-  padding: 6px;
-  margin: 6px 0px;
-  border-radius: 5px;
+  padding: 0px 0px 10px;
+  font-size: 1.5rem;
 }
