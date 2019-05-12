@@ -16,6 +16,7 @@
 }
 
 .project-name {
+  color: #444;
   border-bottom: solid #ddd 2px;
   padding: 0px 0px 10px;
   font-size: 1.5rem;

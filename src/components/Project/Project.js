@@ -14,7 +14,7 @@ export const Project = (props) => {
 
     return(
       <div className='project-card'>
-        <Link to={`/my-projects/${id}`}>
+        <Link to={`/my-projects/${id}`} style={{ textDecoration: 'none' }}>
           <h2 className='project-name'>
             {name}
           </h2>
