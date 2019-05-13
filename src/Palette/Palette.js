@@ -22,7 +22,9 @@ export class Palette extends Component {
   
   setColors = () => {
     Object.keys(this.state).forEach(color => {
-      this.setState({ [color]: { color: this.createColors(), locked: false }})
+      if(color.includes('color') && this.state[color]['locked'] === false) {
+        this.setState({ [color]: { color: this.createColors(), locked: false }})
+      }
     })
   }
 
@@ -44,19 +46,17 @@ export class Palette extends Component {
     })
   }
 
-  // lockColor = (color, index) => {
-  //   const { lockedColors } = this.state;
-  //   lockedColors.forEach(lockedColor => {
-  //     if(!lockedColor.color === color) {
-  //       this.setState({ lockedColors: [...lockedColors, {color, index}]})
-  //     } else {
-  //       const newLocked = lockedColors.filter(lockedColor => {
-  //         return lockedColor.color !== color
-  //       })
-  //       this.setState({ lockedColors: newLocked })      
-  //     }
-  //   })
-  // }
+  lockColor = (color, index) => {
+    const stateKeys = Object.keys(this.state)
+    const stateColors = stateKeys.splice(0, stateKeys.length - 1)
+    stateColors.forEach(stateColor => {
+      if(this.state[stateColor].color === color) {
+        this.setState({ [stateColor]: { color: color, locked: 
+        !this.state[stateColor].locked }})
+      }
+      }
+    )
+  }
 
   savePalette = (bool) => {
     this.setState({ showForm: bool })
@@ -66,7 +66,7 @@ export class Palette extends Component {
     const { showForm, colors } = this.state;
     return(
       <div>
-        <button onClick={() => this.savePalette(true)}>Save Palete</button>
+        <button onClick={() => this.savePalette(true)}>Save Palette</button>
         <button onClick={this.setColors}>New Palette</button>
         <div className='palette'>
           {this.renderColors()}
