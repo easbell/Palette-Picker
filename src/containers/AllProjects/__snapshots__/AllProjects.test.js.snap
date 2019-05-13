@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllProjects should match the snapshot 1`] = `
+<div
+  className="projects-container"
+>
+  <ConnectFunction
+    key="1"
+    project={
+      Object {
+        "id": 1,
+        "name": "my project",
+      }
+    }
+  />
+  <ConnectFunction
+    key="2"
+    project={
+      Object {
+        "id": 2,
+        "name": "my other project",
+      }
+    }
+  />
+</div>
+`;
