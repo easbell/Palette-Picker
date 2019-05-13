@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Palette should match snapshot 1`] = `
+<div>
+  <button
+    className="save"
+    onClick={[Function]}
+  >
+    Save Palette
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    New Palette
+  </button>
+  <div
+    className="palette"
+  >
+    <Color
+      color="#FFC47E"
+      key="0"
+      lockColor={[Function]}
+      savePalette={[Function]}
+    />
+    <Color
+      color="#1063FA"
+      key="1"
+      lockColor={[Function]}
+      savePalette={[Function]}
+    />
+    <Color
+      color="#9E0DD4"
+      key="2"
+      lockColor={[Function]}
+      savePalette={[Function]}
+    />
+    <Color
+      color="#7752E5"
+      key="3"
+      lockColor={[Function]}
+      savePalette={[Function]}
+    />
+    <Color
+      color="#09EB7E"
+      key="4"
+      lockColor={[Function]}
+      savePalette={[Function]}
+    />
+  </div>
+</div>
+`;
