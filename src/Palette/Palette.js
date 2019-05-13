@@ -63,7 +63,7 @@ export class Palette extends Component {
   }
 
   render() {
-    const { showForm, colors } = this.state;
+    const { showForm } = this.state;
     return(
       <div>
         <button onClick={() => this.savePalette(true)}>Save Palette</button>
@@ -72,7 +72,7 @@ export class Palette extends Component {
           {this.renderColors()}
         </div>
         {showForm &&
-          <PaletteForm savePalette={this.savePalette} colors={colors}/>
+          <PaletteForm savePalette={this.savePalette} colors={{...this.state}}/>
         }
       </div>
     )
