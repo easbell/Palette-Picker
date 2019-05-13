@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { shallow } from 'enzyme';
 import { handleFetch } from '../../thunks/handleFetch';
