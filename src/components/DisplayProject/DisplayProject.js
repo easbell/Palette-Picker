@@ -24,7 +24,7 @@ export const DisplayProject = (props) => {
     )
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   palettes: state.palettes
 })
 

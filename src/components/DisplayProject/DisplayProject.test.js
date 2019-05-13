@@ -1,5 +1,5 @@
 import React from 'react'
-import { DisplayProject } from './DisplayProject'
+import { DisplayProject, mapStateToProps } from './DisplayProject'
 import { shallow } from 'enzyme'
 
 describe('DisplayProject', () => {
@@ -13,5 +13,18 @@ describe('DisplayProject', () => {
     wrapper = shallow(<DisplayProject {...mockProps} />)
     expect(wrapper).toMatchSnapshot()
   })
-  
+
+  describe('mapStateToProps', () => {
+    it('returns correct props', () => {
+      const mockState = {
+        palettes: ['palettes']
+      }
+      const expectedProps = {
+        palettes: ['palettes']
+      }
+
+      const mappedProps = mapStateToProps(mockState);
+      expect(mappedProps).toEqual(expectedProps)
+    });
+  });
 })
