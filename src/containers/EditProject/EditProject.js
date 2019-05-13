@@ -47,12 +47,12 @@ export const EditProject = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   palettes: state.palettes,
   projects: state.projects
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   setProjects: (projects) => dispatch(setProjects(projects)),
   setPalettes: (palettes) => dispatch(setPalettes(palettes))
 })
