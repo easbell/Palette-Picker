@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import '../../components/DisplayProject/DisplayProject.css'
 import EditPalette from '../EditPalette/EditPalette'
 import { setProjects, setPalettes } from '../../actions'
-import { deletePaletteBE, deleteProjectBE } from '../../helpers/apiCalls'
+import { deleteFromBE } from '../../helpers/apiCalls'
 import { withRouter } from 'react-router-dom'
 
 export const EditProject = (props) => {
@@ -19,7 +19,8 @@ export const EditProject = (props) => {
       return project.id !== id
     })
     props.setProjects(updatedProjects)
-    deleteProjectBE(id)
+    const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${id}`
+    deleteFromBE(url, id)
     deleteLinkedPalettes(id)
   }
 
@@ -27,7 +28,8 @@ export const EditProject = (props) => {
     props.palettes.filter(palette => {
       return palette.project_id === id
     }).forEach(palette => {
-      deletePaletteBE(palette.id)
+      const url = process.env.REACT_APP_BACKEND_URL + `api/v1/palettes/${palette.id}`
+      deleteFromBE(url, palette.id)
     })
     const unlinkedPalettes = props.palettes.filter(palette => {
       return palette.project_id !== id
