@@ -44,10 +44,8 @@ describe('PaletteForm', () => {
 
   it('should invoke addProject and addPalette when handleSubmit is invoked', async () => {
     const addProjectSpy = jest.spyOn(wrapper.instance(), 'addProject')
-    const addPaletteSpy = jest.spyOn(wrapper.instance(), 'addPalette')
     await wrapper.find('form').simulate('submit', {preventDefault: () => {}});
     expect(addProjectSpy).toHaveBeenCalled();
-    expect(addPaletteSpy).toHaveBeenCalled();
   });
 
   it('should dispatch handleFetch twice when addProject is invoked', async () => {

@@ -17,31 +17,31 @@ exports[`Palette should match snapshot 1`] = `
     className="palette"
   >
     <Color
-      color="#FFC47E"
+      color="#383432"
       key="0"
       lockColor={[Function]}
       savePalette={[Function]}
     />
     <Color
-      color="#1063FA"
+      color="#CF6452"
       key="1"
       lockColor={[Function]}
       savePalette={[Function]}
     />
     <Color
-      color="#9E0DD4"
+      color="#D9F4BF"
       key="2"
       lockColor={[Function]}
       savePalette={[Function]}
     />
     <Color
-      color="#7752E5"
+      color="#FB538D"
       key="3"
       lockColor={[Function]}
       savePalette={[Function]}
     />
     <Color
-      color="#09EB7E"
+      color="#A3A9AA"
       key="4"
       lockColor={[Function]}
       savePalette={[Function]}
