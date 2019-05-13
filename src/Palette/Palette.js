@@ -46,7 +46,7 @@ export class Palette extends Component {
     })
   }
 
-  lockColor = (color, index) => {
+  lockColor = (color) => {
     const stateKeys = Object.keys(this.state)
     const stateColors = stateKeys.splice(0, stateKeys.length - 1)
     stateColors.forEach(stateColor => {
