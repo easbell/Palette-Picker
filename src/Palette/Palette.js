@@ -7,26 +7,23 @@ export class Palette extends Component {
   constructor() {
     super()
     this.state = {
-      colors: [],
-      lockedColors: [],
+      color1: {color: '', locked: false},
+      color2: {color: '', locked: false},
+      color3: {color: '', locked: false},
+      color4: {color: '', locked: false},
+      color5: {color: '', locked: false},
       showForm: false
     }
   }
 
   componentDidMount() {
-    const colors = this.setColors()
-    this.setState({colors})
+    this.setColors()
   }
-
+  
   setColors = () => {
-    let colors = [0, 0, 0, 0, 0]
-    let randomColor;
-    return colors.map(color => {
-      randomColor = this.createColors()
-      if(!colors.includes(randomColor)) {
-        return randomColor
-      } else {
-        return this.createColors()
+    Object.keys(this.state).forEach(color => {
+      if(color.includes('color') && this.state[color]['locked'] === false) {
+        this.setState({ [color]: { color: this.createColors(), locked: false }})
       }
     })
   }
@@ -40,21 +37,25 @@ export class Palette extends Component {
     return hexCode
   }
 
-  lockColor = (color) => {
-    const { lockedColors } = this.state;
-    if(!lockedColors.includes(color)) {
-      this.setState({ lockedColors: [...lockedColors, color]})
-    } else {
-      const newLocked = lockedColors.filter(lockedColor =>  lockedColor !== color)
-      this.setState({ lockedColors: newLocked })      
-    }
+  renderColors = () => {
+    const stateKeys = Object.keys(this.state)
+    const colors = stateKeys.splice(0, stateKeys.length - 1)
+    return colors.map((color, i) => {
+      const hexCode = this.state[color].color
+      return <Color key={i} lockColor={this.lockColor} color={hexCode} savePalette={this.savePalette}/>
+    })
   }
 
-  renderColors = () => {
-    const { colors } = this.state
-    return colors.map(color => {
-      return <Color key={color} lockColor={this.lockColor} color={color} savePalette={this.savePalette}/>
-    })
+  lockColor = (color) => {
+    const stateKeys = Object.keys(this.state)
+    const stateColors = stateKeys.splice(0, stateKeys.length - 1)
+    stateColors.forEach(stateColor => {
+      if(this.state[stateColor].color === color) {
+        this.setState({ [stateColor]: { color: color, locked: 
+        !this.state[stateColor].locked }})
+      }
+      }
+    )
   }
 
   savePalette = (bool) => {
@@ -62,15 +63,16 @@ export class Palette extends Component {
   }
 
   render() {
-    const { showForm, colors } = this.state;
+    const { showForm } = this.state;
     return(
       <div>
-        <button onClick={() => this.savePalette(true)}>Save Palete</button>
+        <button onClick={() => this.savePalette(true)}>Save Palette</button>
+        <button onClick={this.setColors}>New Palette</button>
         <div className='palette'>
           {this.renderColors()}
         </div>
         {showForm &&
-          <PaletteForm savePalette={this.savePalette} colors={colors}/>
+          <PaletteForm savePalette={this.savePalette} colors={{...this.state}}/>
         }
       </div>
     )
