@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaletteForm should match snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <h2>
+    Save Palette
+  </h2>
+  <input
+    className="name-input"
+    name="paletteName"
+    onChange={[Function]}
+    placeholder="Name this palette"
+    value=""
+  />
+  <DropdownButton
+    id="dropdown-basic-button"
+    title="Saved Projects"
+  >
+    <DropdownItem
+      as={[Function]}
+      className="dropdown-item"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Add new project
+    </DropdownItem>
+    <div
+      className="dropdown-divider"
+    />
+    <DropdownItem
+      as={[Function]}
+      disabled={false}
+      key="1"
+      onClick={[Function]}
+    >
+      project
+    </DropdownItem>
+    <DropdownItem
+      as={[Function]}
+      disabled={false}
+      key="2"
+      onClick={[Function]}
+    >
+      project
+    </DropdownItem>
+  </DropdownButton>
+  <button
+    type="submit"
+  >
+    Save palette & project
+  </button>
+</form>
+`;

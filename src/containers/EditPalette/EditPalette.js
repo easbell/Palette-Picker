@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import '../../components/DisplayPalette/DisplayPalette.css'
 import { setPalettes } from '../../actions'
-import { deletePaletteBE } from '../../helpers/apiCalls'
+import { deleteFromBE } from '../../helpers/apiCalls'
 
 export const EditPalette = (props) => {
   const { id, palette_name, color_1, color_2, color_3, color_4, color_5 } = props.palette
@@ -12,8 +12,9 @@ export const EditPalette = (props) => {
     const updatedPalettes = palettes.filter(palette => { 
       return palette.id !== id
     })
-    props.setPalettes(updatedPalettes)
-    deletePaletteBE(id)
+    props.setPalettes(updatedPalettes);
+    const url = process.env.REACT_APP_BACKEND_URL + `api/v1/palettes/${id}`
+    deleteFromBE(url, id)
   }
 
   return(

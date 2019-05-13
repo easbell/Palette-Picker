@@ -84,6 +84,7 @@ export class PaletteForm extends Component {
         <input 
           placeholder='Name this palette'
           name='paletteName'
+          className='name-input'
           value={this.state.paletteName}
           onChange={this.handleChange}
         />
