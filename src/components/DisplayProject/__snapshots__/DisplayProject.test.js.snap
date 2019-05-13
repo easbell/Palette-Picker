@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DisplayProject should match the snapshot 1`] = `
+<div
+  className="project-card"
+>
+  <Link
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+    to="/my-projects/1"
+  >
+    <h2
+      className="project-name"
+    >
+      my project
+    </h2>
+    <DisplayPalette
+      key="1"
+      palette={
+        Object {
+          "id": 1,
+          "project_id": 1,
+        }
+      }
+    />
+  </Link>
+</div>
+`;
