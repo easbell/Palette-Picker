@@ -1,12 +1,12 @@
 import React from 'react'
-import Project from '../../components/Project/Project'
+import DisplayProject from '../../components/DisplayProject/DisplayProject'
 import { connect } from 'react-redux'
-import './Projects.css'
+import './AllProjects.css'
 
-export const Projects = (props) => {
+export const AllProjects = (props) => {
     
     const projects = props.projects.map(project => {
-      return <Project key={project.id} project={project}/>
+      return <DisplayProject key={project.id} project={project}/>
     })
     
     return(
@@ -20,4 +20,4 @@ const mapStateToProps = (state) => ({
   projects: state.projects
 })
 
-export default connect(mapStateToProps)(Projects)
+export default connect(mapStateToProps)(AllProjects)

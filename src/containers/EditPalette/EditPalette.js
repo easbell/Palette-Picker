@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import '../../components/PaletteDisplay/PaletteDisplay.css'
+import '../../components/DisplayPalette/DisplayPalette.css'
 import { setPalettes } from '../../actions'
 import { deletePaletteBE } from '../../helpers/apiCalls'
 
