@@ -33,7 +33,6 @@ export class App extends Component {
           <Link to='/'>
             <h1>Palette Picker</h1>
           </Link>
-          {/* generate button */}
           <NavLink
             exact to='/my-projects'
           >
