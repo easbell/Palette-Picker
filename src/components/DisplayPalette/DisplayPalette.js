@@ -1,7 +1,7 @@
 import React from 'react'
-import './PaletteDisplay.css'
+import './DisplayPalette.css'
 
-export const PaletteDisplay = ({palette}) => {
+export const DisplayPalette = ({palette}) => {
     const { palette_name, color_1, color_2, color_3, color_4, color_5 } = palette
     
     return(
@@ -20,5 +20,5 @@ export const PaletteDisplay = ({palette}) => {
     )
 }
 
-export default PaletteDisplay
+export default DisplayPalette
 

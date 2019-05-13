@@ -5,7 +5,7 @@ import { handleFetch } from '../../thunks/handleFetch';
 import { connect } from 'react-redux';
 import { setProjects, setPalettes } from '../../actions';
 import { Route, Switch, Link, NavLink, withRouter } from 'react-router-dom'
-import Projects from '../../containers/Projects/Projects'
+import AllProjects from '../../containers/AllProjects/AllProjects'
 import EditProject from '../EditProject/EditProject'
 
 export class App extends Component {
@@ -48,7 +48,7 @@ export class App extends Component {
             />
             <Route 
               exact path='/my-projects'
-              render={() => <Projects />}
+              render={() => <AllProjects />}
             />
             <Route 
               exact path='/my-projects/:id'

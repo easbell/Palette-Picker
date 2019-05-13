@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import '../../components/Project/Project.css'
+import '../../components/DisplayProject/DisplayProject.css'
 import EditPalette from '../EditPalette/EditPalette'
 import { setProjects, setPalettes } from '../../actions'
 import { deletePaletteBE, deleteProjectBE } from '../../helpers/apiCalls'
