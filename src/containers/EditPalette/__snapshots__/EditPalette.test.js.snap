@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditPalette should match the snapshot 1`] = `
+<div
+  className="edit-palette-card"
+>
+  <div
+    className="palette-card edit-palette"
+  >
+    <h3
+      className="palette-name"
+    >
+      my palette
+    </h3>
+    <div
+      className="display-colors"
+    >
+      <div
+        className="display-color"
+        style={
+          Object {
+            "backgroundColor": "blue",
+          }
+        }
+      />
+      <div
+        className="display-color"
+        style={
+          Object {
+            "backgroundColor": "pink",
+          }
+        }
+      />
+      <div
+        className="display-color"
+        style={
+          Object {
+            "backgroundColor": "yellow",
+          }
+        }
+      />
+      <div
+        className="display-color"
+        style={
+          Object {
+            "backgroundColor": "green",
+          }
+        }
+      />
+      <div
+        className="display-color"
+        style={
+          Object {
+            "backgroundColor": "red",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="delete-palette"
+    onClick={[Function]}
+  >
+    <i
+      className="far fa-trash-alt"
+    />
+  </div>
+</div>
+`;

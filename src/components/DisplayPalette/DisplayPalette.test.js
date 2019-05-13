@@ -1,9 +1,6 @@
 import React from 'react'
 import { DisplayPalette } from './DisplayPalette'
-import { shallow, configure } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16';
-configure({ adapter: new Adapter() });
-
+import { shallow } from 'enzyme'
 
 describe('DisplayPalette', () => {
   let wrapper

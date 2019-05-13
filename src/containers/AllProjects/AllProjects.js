@@ -16,7 +16,7 @@ export const AllProjects = (props) => {
     )
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   projects: state.projects
 })
 

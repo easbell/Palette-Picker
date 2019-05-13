@@ -36,11 +36,11 @@ export const EditPalette = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   palettes: state.palettes,
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   setPalettes: (palettes) => dispatch(setPalettes(palettes))
 })
 
