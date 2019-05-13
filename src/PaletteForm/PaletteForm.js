@@ -51,11 +51,11 @@ export class PaletteForm extends Component {
       method: 'POST',
       body: JSON.stringify({
         palette_name: paletteName,
-        color_1: colors[0],
-        color_2: colors[1],
-        color_3: colors[2],
-        color_4: colors[3],
-        color_5: colors[4]
+        color_1: colors.color1.color,
+        color_2: colors.color2.color,
+        color_3: colors.color3.color,
+        color_4: colors.color4.color,
+        color_5: colors.color5.color
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -88,8 +88,8 @@ export class PaletteForm extends Component {
           onChange={this.handleChange}
         />
         <DropdownButton id="dropdown-basic-button" title="Saved Projects">
-          <Dropdown.Item class="dropdown-item" onClick={this.newProject}>Add new project</Dropdown.Item>
-          <div class="dropdown-divider"></div>
+          <Dropdown.Item className="dropdown-item" onClick={this.newProject}>Add new project</Dropdown.Item>
+          <div className="dropdown-divider"></div>
           {this.showProjects()}
         </DropdownButton>
         { this.state.newProject &&
