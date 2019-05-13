@@ -18,6 +18,9 @@ export class Palette extends Component {
   }
   
   setColors = () => {
+    if(this.state.lockedColors.length >= 1) {
+      
+    }
     let colors = [0, 0, 0, 0, 0]
     let randomColor;
     colors = colors.map(color => {
@@ -40,20 +43,27 @@ export class Palette extends Component {
     return hexCode
   }
 
-  lockColor = (color) => {
+  lockColor = (color, index) => {
+    console.log(color, index)
     const { lockedColors } = this.state;
-    if(!lockedColors.includes(color)) {
-      this.setState({ lockedColors: [...lockedColors, color]})
-    } else {
-      const newLocked = lockedColors.filter(lockedColor =>  lockedColor !== color)
-      this.setState({ lockedColors: newLocked })      
-    }
+    lockedColors.forEach(lockedColor => {
+      console.log(lockedColor)
+      if(!lockedColor.color === color) {
+        this.setState({ lockedColors: [...lockedColors, {color, index}]})
+      } else {
+        const newLocked = lockedColors.filter(lockedColor => {
+          console.log(lockedColor)
+          return lockedColor.color !== color
+        })
+        this.setState({ lockedColors: newLocked })      
+      }
+    })
   }
 
   renderColors = () => {
     const { colors } = this.state
-    return colors.map(color => {
-      return <Color key={color} lockColor={this.lockColor} color={color} savePalette={this.savePalette}/>
+    return colors.map((color, index) => {
+      return <Color key={color} index={index} lockColor={this.lockColor} color={color} savePalette={this.savePalette}/>
     })
   }
 
