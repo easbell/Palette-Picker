@@ -21,15 +21,20 @@ handleChange = (e) => {
   this.setState({ [name]: value })
 }
 
-handleSubmit = async (e) => {
+handleSubmit =  (e) => {
+  let update = false
   e.preventDefault();
   const newName = this.state.projectName
-  const projectNames = this.props.projects.map(project => project.name)
-  if (projectNames.includes(newName)) {
-    cogoToast.warn(`${newName} already exists. Please choose another name for your project`, {position: 'bottom-left'})
-  } else {
-    await this.updateProject(this.props.foundProject.id)
-  }
+  this.props.projects.forEach(project => {
+    if(newName === this.props.foundProject.name) {
+      update = true
+    } else if ( project.name === newName ){
+      cogoToast.warn(`${newName} already exists. Please choose another name for your project`, {position: 'bottom-left'})
+    } else {
+      update = true
+    }
+  })
+  if (update === true) this.updateProject(this.props.foundProject.id)
 }
 
 updateProject = async (id) => {
