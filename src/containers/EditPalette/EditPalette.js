@@ -1,8 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import '../../components/DisplayPalette/DisplayPalette.css'
-import { setPalettes } from '../../actions'
-import { handleDelete } from '../../thunks/handleDelete'
+import React from 'react';
+import { connect } from 'react-redux';
+import '../../components/DisplayPalette/DisplayPalette.css';
+import { setPalettes } from '../../actions';
+import { handleDelete } from '../../thunks/handleDelete';
+import cogoToast from 'cogo-toast';
+
 export const EditPalette = (props) => {
   const { id, palette_name, color_1, color_2, color_3, color_4, color_5 } = props.palette
   const { palettes } = props
@@ -13,6 +15,7 @@ export const EditPalette = (props) => {
     })
     const url = process.env.REACT_APP_BACKEND_URL + `api/v1/palettes/${id}`
     props.handleDelete(url, setPalettes, updatedPalettes, id)
+    cogoToast.success('Palette was deleted.', {position: 'bottom-left'});
   }
 
   return(

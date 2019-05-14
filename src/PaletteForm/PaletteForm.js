@@ -5,6 +5,7 @@ import { handleFetch } from '../thunks/handleFetch';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './PaletteForm.css';
+import cogoToast from 'cogo-toast';
 
 export class PaletteForm extends Component {
   constructor() {
@@ -39,6 +40,7 @@ export class PaletteForm extends Component {
     }
     await this.props.handleFetch(url, addProject, optionsObject);
     await this.props.handleFetch(url, setProjects);
+    cogoToast.success('Project was added.', {position: 'bottom-left'});
   }
   
   addPalette = async (projectId) => {
@@ -64,6 +66,7 @@ export class PaletteForm extends Component {
     await this.props.handleFetch(url, addPalette, optionsObject)
     this.props.savePalette(false);
     this.props.handleFetch(allPalettesUrl, setPalettes);
+    cogoToast.success('Palette was added.', {position: 'bottom-left'});
   }
 
   showProjects = () => {

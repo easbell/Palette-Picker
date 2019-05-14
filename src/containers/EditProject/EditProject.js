@@ -1,10 +1,11 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import '../../components/DisplayProject/DisplayProject.css'
-import EditPalette from '../EditPalette/EditPalette'
-import { setProjects, setPalettes } from '../../actions'
-import { handleDelete } from '../../thunks/handleDelete'
-import { withRouter } from 'react-router-dom'
+import React from 'react';
+import { connect } from 'react-redux';
+import '../../components/DisplayProject/DisplayProject.css';
+import EditPalette from '../EditPalette/EditPalette';
+import { setProjects, setPalettes } from '../../actions';
+import { handleDelete } from '../../thunks/handleDelete';
+import { withRouter } from 'react-router-dom';
+import cogoToast from 'cogo-toast';
 
 export const EditProject = (props) => {
   const { name, id } = props.foundProject
@@ -18,6 +19,7 @@ export const EditProject = (props) => {
     const updatedProjects = props.projects.filter(project => project.id !== id )
     const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${id}`
     props.handleDelete(url, setProjects, updatedProjects, id)
+    cogoToast.success('Project was deleted.', {position: 'bottom-left'});
     deleteLinkedPalettes(id)
   }
 
