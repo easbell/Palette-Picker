@@ -13,7 +13,7 @@ describe('PaletteForm', () => {
 
   beforeEach(() => {
     mockFn = jest.fn();
-    mockProjects = [{id: 1, name: 'project'}, {id: 2, name: 'project'}];
+    mockProjects = [{id: 1, name: 'PROJECT'}, {id: 2, name: 'project'}];
     mockColors = {
       color1: {color: 'red'},
       color2: {color: 'red'},
@@ -41,6 +41,13 @@ describe('PaletteForm', () => {
     wrapper.find('.name-input').simulate('change', mockEvent);
     expect(wrapper.state('paletteName')).toBe('new palette');
   });
+
+  it('should not invoke addProject if a project name already exist', async () => {
+    const addProjectSpy = jest.spyOn(wrapper.instance(), 'addProject')
+    wrapper.setState({projectName: 'project'})
+    await wrapper.find('form').simulate('submit', {preventDefault: () => {}})
+    expect(addProjectSpy).not.toHaveBeenCalled()
+  })
 
   it('should invoke addProject and addPalette when handleSubmit is invoked', async () => {
     const addProjectSpy = jest.spyOn(wrapper.instance(), 'addProject')
