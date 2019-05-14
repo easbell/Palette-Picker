@@ -13,7 +13,7 @@ export const EditProject = (props) => {
     return palette.project_id === id
   }).map(palette => {
       return <EditPalette key={palette.id} palette={palette}/>
-    })
+  })
 
   const deleteProject = (id) => {
     const updatedProjects = props.projects.filter(project => project.id !== id )
