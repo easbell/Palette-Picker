@@ -83,7 +83,6 @@ export class PaletteForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h2>Save Palette</h2>
         <input 
           placeholder='Name this palette'
           name='paletteName'
