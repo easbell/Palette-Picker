@@ -7,8 +7,8 @@ import { setProjects, setPalettes } from '../../actions';
 import { Route, Switch, Link, NavLink, withRouter } from 'react-router-dom';
 import AllProjects from '../../containers/AllProjects/AllProjects';
 import EditProject from '../EditProject/EditProject';
+import { PageNotFound } from '../../components/PageNotFound/PageNotFound';
 import cogoToast from 'cogo-toast';
-
 
 export class App extends Component {
   componentDidMount = () => {
@@ -21,7 +21,7 @@ export class App extends Component {
 
   checkForErrors = () => {
     if(this.props.error.length > 1) {
-      cogoToast.success('Project was added.', {position: 'bottom-left'});
+      cogoToast.error('There was an error.', {position: 'bottom-left'});
     }
   }
 
@@ -62,6 +62,7 @@ export class App extends Component {
               exact path='/my-projects/:id'
               render={this.findProject}
             />
+            <Route component={PageNotFound} />
           </Switch>
         </div>
       </div>
