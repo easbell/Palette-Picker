@@ -34,7 +34,7 @@ handleSubmit = async (e) => {
 
 updateProject = async (id) => {
   this.props.history.push('/my-projects')
-  const name = this.state.projectName
+  const name = this.state.projectName.toUpperCase()
   const projectUrl = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${id}/`
   const url = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects'
   const optionsObject = {

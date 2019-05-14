@@ -51,7 +51,7 @@ export class PaletteForm extends Component {
   addPalette = async (projectId) => {
     const { paletteName } = this.state
     const { colors } = this.props
-    const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${projectId.id}/palettes/`
+    const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${projectId}/palettes/`
     const allPalettesUrl = process.env.REACT_APP_BACKEND_URL + `api/v1/palettes/`    
     const optionsObject = {
       method: 'POST',
