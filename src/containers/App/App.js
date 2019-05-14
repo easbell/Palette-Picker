@@ -32,13 +32,13 @@ export class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header>
-          <Link to='/'>
-            <h1>Palette Picker</h1>
+      <div className='App'>
+        <header className='header'>
+          <Link to='/' style={{ textDecoration: 'none' }}>
+            <h1 className='logo'>Palette Picker</h1>
           </Link>
-          <NavLink exact to='/my-projects'>
-            My Projects
+          <NavLink exact to='/my-projects' style={{ textDecoration: 'none' }}>
+            <h3 className='links'>My Projects</h3>
           </NavLink>
         </header>
         <div>
