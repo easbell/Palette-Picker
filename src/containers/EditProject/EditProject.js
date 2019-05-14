@@ -15,27 +15,22 @@ export const EditProject = (props) => {
     })
 
   const deleteProject = (id) => {
-    const updatedProjects = props.projects.filter(project => {
-      return project.id !== id
-    })
+    const updatedProjects = props.projects.filter(project => project.id !== id )
     const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${id}`
     props.handleDelete(url, setProjects, updatedProjects, id)
     deleteLinkedPalettes(id)
   }
 
   const deleteLinkedPalettes = (id) => {
-    const unlinkedPalettes = props.palettes.filter(palette => {
-      return palette.id !== id
-    })
-    
+    const unlinkedPalettes = props.palettes.filter(palette => palette.id !== id )
+
     props.palettes.filter(palette => {
       return palette.project_id === id
     }).forEach(palette => {
       const url = process.env.REACT_APP_BACKEND_URL + `api/v1/palettes/${palette.id}`
-      console.log(url)
       props.handleDelete(url, setPalettes, unlinkedPalettes, id)
     })
-     
+
     props.history.push('/my-projects')
   }
 
