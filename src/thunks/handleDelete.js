@@ -1,6 +1,6 @@
 import { isLoading, hasErrored } from '../actions'
 
-export const handleDelete = (url, action, items, id) => {
+export const handleDelete = (url, action, projects, id) => {
   return async (dispatch) => {
     dispatch(isLoading(true))
     try {
@@ -11,10 +11,9 @@ export const handleDelete = (url, action, items, id) => {
           'Content-Type': 'application/json'
         }
       })
-      const msg = await response.json()
-      console.log(msg)
+      await response.json()
       dispatch(isLoading(false))
-      dispatch(action(items))
+      dispatch(action(projects))
     } catch (error) {
       dispatch(hasErrored(error.message))
     }
