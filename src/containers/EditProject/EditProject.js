@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import '../../components/DisplayProject/DisplayProject.css'
 import EditPalette from '../EditPalette/EditPalette'
 import { setProjects, setPalettes } from '../../actions'
-import { deleteFromBE } from '../../helpers/apiCalls'
+import { handleDelete } from '../../thunks/handleDelete'
 import { withRouter } from 'react-router-dom'
 
 export const EditProject = (props) => {
@@ -18,23 +18,24 @@ export const EditProject = (props) => {
     const updatedProjects = props.projects.filter(project => {
       return project.id !== id
     })
-    props.setProjects(updatedProjects)
     const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${id}`
-    deleteFromBE(url, id)
+    props.handleDelete(url, setProjects, updatedProjects, id)
     deleteLinkedPalettes(id)
   }
 
   const deleteLinkedPalettes = (id) => {
+    const unlinkedPalettes = props.palettes.filter(palette => {
+      return palette.id !== id
+    })
+    
     props.palettes.filter(palette => {
       return palette.project_id === id
     }).forEach(palette => {
       const url = process.env.REACT_APP_BACKEND_URL + `api/v1/palettes/${palette.id}`
-      deleteFromBE(url, palette.id)
+      console.log(url)
+      props.handleDelete(url, setPalettes, unlinkedPalettes, id)
     })
-    const unlinkedPalettes = props.palettes.filter(palette => {
-      return palette.project_id !== id
-    })
-    setPalettes(unlinkedPalettes)
+     
     props.history.push('/my-projects')
   }
 
@@ -55,8 +56,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  setProjects: (projects) => dispatch(setProjects(projects)),
-  setPalettes: (palettes) => dispatch(setPalettes(palettes))
+  handleDelete: (url, action, items, id) => dispatch(handleDelete(url, action, items, id))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditProject))

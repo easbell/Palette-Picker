@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import '../../components/DisplayPalette/DisplayPalette.css'
 import { setPalettes } from '../../actions'
-import { handleDelete } from '../../thunks/handlePalettes'
+import { handleDelete } from '../../thunks/handleDelete'
 export const EditPalette = (props) => {
   const { id, palette_name, color_1, color_2, color_3, color_4, color_5 } = props.palette
   const { palettes } = props
@@ -39,7 +39,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  handleDelete: (url, action, items, id) => dispatch(handleDelete(url, action, palettes, id))
+  handleDelete: (url, action, items, id) => dispatch(handleDelete(url, action, items, id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPalette)

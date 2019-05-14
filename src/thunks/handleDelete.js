@@ -2,6 +2,7 @@ import { isLoading, hasErrored } from '../actions'
 
 export const handleDelete = (url, action, items, id) => {
   return async (dispatch) => {
+    console.log(items)
     dispatch(isLoading(true))
     try {
       const response = await fetch(url, {
@@ -14,7 +15,7 @@ export const handleDelete = (url, action, items, id) => {
       const msg = await response.json()
       console.log(msg)
       dispatch(isLoading(false))
-      dispatch(action(palettes))
+      dispatch(action(items))
     } catch (error) {
       dispatch(hasErrored(error.message))
     }
