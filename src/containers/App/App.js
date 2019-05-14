@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Palette from '../../Palette/Palette';
+import Palette from '../../components/Palette/Palette';
 import { handleFetch } from '../../thunks/handleFetch';
 import { connect } from 'react-redux';
 import { setProjects, setPalettes } from '../../actions';
 import { Route, Switch, Link, NavLink, withRouter } from 'react-router-dom';
-import AllProjects from '../../containers/AllProjects/AllProjects';
+import AllProjects from '../AllProjects/AllProjects';
 import EditProject from '../EditProject/EditProject';
 import { PageNotFound } from '../../components/PageNotFound/PageNotFound';
 import cogoToast from 'cogo-toast';
@@ -27,12 +27,7 @@ export class App extends Component {
 
   findProject = ({ match }) => {
     const foundProject = this.props.projects.find(project => project.id == match.params.id)
-    
-    if(!foundProject) {
-      return '404 Project not found'
-    } else {
       return <EditProject foundProject={foundProject} />
-    }
   }
 
   render() {
@@ -42,24 +37,19 @@ export class App extends Component {
           <Link to='/'>
             <h1>Palette Picker</h1>
           </Link>
-          <NavLink
-            exact to='/my-projects'
-          >
+          <NavLink exact to='/my-projects'>
             My Projects
           </NavLink>
         </header>
         <div>
           <Switch>
-            <Route
-              exact path='/'
+            <Route exact path='/'
               render={() => <Palette />}
             />
-            <Route 
-              exact path='/my-projects'
+            <Route exact path='/my-projects'
               render={() => <AllProjects />}
             />
-            <Route 
-              exact path='/my-projects/:id'
+            <Route exact path='/my-projects/:id'
               render={this.findProject}
             />
             <Route component={PageNotFound} />

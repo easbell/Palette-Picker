@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { addProject, setProjects, addPalette, setPalettes } from '../actions';
+import { addProject, setProjects, addPalette, setPalettes } from '../../actions';
 import { connect } from 'react-redux';
-import { handleFetch } from '../thunks/handleFetch';
+import { handleFetch } from '../../thunks/handleFetch';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './PaletteForm.css';

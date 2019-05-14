@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Color from '../Color/Color';
-import PaletteForm from '../PaletteForm/PaletteForm';
+import PaletteForm from '../../containers/PaletteForm/PaletteForm';
 import './Palette.css';
 
 export class Palette extends Component {
