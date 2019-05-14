@@ -84,20 +84,20 @@ export class PaletteForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className='palette-form'>
         <input 
-          placeholder='Name this palette'
+          placeholder='Name your palette'
           name='paletteName'
           className='name-input'
           value={this.state.paletteName}
           onChange={this.handleChange}
         />
-        <DropdownButton id="dropdown-basic-button" title="Saved Projects">
-          <Dropdown.Item className="dropdown-item" onClick={this.newProject}>Add new project</Dropdown.Item>
+        <DropdownButton id="dropdown-custom-1" title="Add to Project">
+          <Dropdown.Item className="dropdown-item" onClick={this.newProject}>New project</Dropdown.Item>
           <div className="dropdown-divider"></div>
           {this.showProjects()}
         </DropdownButton>
         { this.state.newProject &&
           <input 
-            placeholder='Name this project' 
+            placeholder='Name your new project' 
             name='projectName'
             value={this.state.projectName}
             onChange={this.handleChange}
