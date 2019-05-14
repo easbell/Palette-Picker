@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import '../../components/DisplayPalette/DisplayPalette.css'
 import { setPalettes } from '../../actions'
-import { deleteFromBE } from '../../helpers/apiCalls'
-
+import { handleDelete } from '../../thunks/handleDelete'
 export const EditPalette = (props) => {
   const { id, palette_name, color_1, color_2, color_3, color_4, color_5 } = props.palette
   const { palettes } = props
@@ -12,9 +11,8 @@ export const EditPalette = (props) => {
     const updatedPalettes = palettes.filter(palette => { 
       return palette.id !== id
     })
-    props.setPalettes(updatedPalettes);
     const url = process.env.REACT_APP_BACKEND_URL + `api/v1/palettes/${id}`
-    deleteFromBE(url, id)
+    props.handleDelete(url, setPalettes, updatedPalettes, id)
   }
 
   return(
@@ -41,7 +39,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  setPalettes: (palettes) => dispatch(setPalettes(palettes))
+  handleDelete: (url, action, items, id) => dispatch(handleDelete(url, action, items, id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPalette)
