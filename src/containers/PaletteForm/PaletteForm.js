@@ -52,7 +52,7 @@ export class PaletteForm extends Component {
   addPalette = async (projectId) => {
     const { paletteName } = this.state
     const { colors } = this.props
-    const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${projectId}/palettes/`
+    const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${projectId.id}/palettes/`
     const allPalettesUrl = process.env.REACT_APP_BACKEND_URL + `api/v1/palettes/`    
     const optionsObject = {
       method: 'POST',
@@ -77,7 +77,7 @@ export class PaletteForm extends Component {
   showProjects = () => {
     const { projects } = this.props;
     return projects.map(project => {
-      return <Dropdown.Item onClick={() => {this.addPalette(project.id)}} key={project.id}>{project.name}</Dropdown.Item>
+      return <Dropdown.Item onClick={() => {this.addPalette(project)}} key={project.id}>{project.name}</Dropdown.Item>
     })
   }
 
