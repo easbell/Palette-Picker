@@ -36,8 +36,10 @@ exports[`App should match snapshot 1`] = `
         path="/my-projects/:id"
         render={[Function]}
       />
+      <Route
+        component={[Function]}
+      />
     </Switch>
   </div>
-  <div />
 </div>
 `;
