@@ -11,6 +11,7 @@ export const handleFetch = (url, action, options) => {
       const data = await response.json()
       dispatch(isLoading(false))
       dispatch(action(data))
+      return data
     } catch (error) {
       dispatch(hasErrored(error.message))
     }

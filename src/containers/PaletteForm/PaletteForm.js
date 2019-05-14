@@ -27,10 +27,9 @@ export class PaletteForm extends Component {
     const newName = this.state.projectName.toUpperCase()
     const projectNames = this.props.projects.map(project => project.name)
     if (projectNames.includes(newName)) {
-      console.log(`${newName} already exists. Please choose another name for your project`)
+      cogoToast.warn(`${newName} already exists. Please choose another name for your project`, {position: 'bottom-left'})
     } else {
       await this.addProject(newName)
-      this.addPalette()
     }
   }
   
@@ -43,16 +42,16 @@ export class PaletteForm extends Component {
         'Content-Type': 'application/json'
       }
     }
-    await this.props.handleFetch(url, addProject, optionsObject);
+    const id = await this.props.handleFetch(url, addProject, optionsObject);
     await this.props.handleFetch(url, setProjects);
+    this.addPalette(id)
     cogoToast.success('Project was added.', {position: 'bottom-left'});
   }
   
   addPalette = async (projectId) => {
     const { paletteName } = this.state
-    const { projects, colors } = this.props
-    const id = projectId || projects[projects.length -1].id
-    const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${id}/palettes/`
+    const { colors } = this.props
+    const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${projectId.id}/palettes/`
     const allPalettesUrl = process.env.REACT_APP_BACKEND_URL + `api/v1/palettes/`    
     const optionsObject = {
       method: 'POST',

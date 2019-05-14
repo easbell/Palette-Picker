@@ -27,7 +27,11 @@ export class App extends Component {
 
   findProject = ({ match }) => {
     const foundProject = this.props.projects.find(project => project.id == match.params.id)
+    if(!foundProject) {
+      return <PageNotFound />
+    } else {
       return <EditProject foundProject={foundProject} />
+    }
   }
 
   render() {
