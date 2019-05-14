@@ -11,7 +11,7 @@ describe('App', () => {
 
   beforeEach(() => {
     mockFn = jest.fn()
-    wrapper = shallow(<App handleFetch={mockFn}/>)
+    wrapper = shallow(<App handleFetch={mockFn} error={''}/>)
   });
 
   it('should match snapshot', () => {

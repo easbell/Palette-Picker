@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { handleFetch } from '../../thunks/handleFetch';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Modal from 'react-bootstrap/Modal'
 import './PaletteForm.css';
 import cogoToast from 'cogo-toast';
 
@@ -83,33 +84,39 @@ export class PaletteForm extends Component {
   newProject = () => {
     this.setState({ newProject: true })
   }
+  
+  handleClose = () => {
+    this.props.hideModal();
+  }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className='palette-form'>
-        <input 
-          placeholder='Name your palette'
-          name='paletteName'
-          className='name-input'
-          value={this.state.paletteName}
-          onChange={this.handleChange}
-        />
-        <DropdownButton id="dropdown-custom-1" title="Add to Project">
-          <Dropdown.Item className="dropdown-item" onClick={this.newProject}>New project</Dropdown.Item>
-          <div className="dropdown-divider"></div>
-          {this.showProjects()}
-        </DropdownButton>
-        { this.state.newProject &&
+      <Modal show={this.props.show} onHide={this.handleClose} className='modal'>
+        <form onSubmit={this.handleSubmit}>
           <input 
-            placeholder='Name your new project' 
-            name='projectName'
-            value={this.state.projectName}
+            placeholder='Name this palette'
+            name='paletteName'
+            className='name-input'
+            value={this.state.paletteName}
             onChange={this.handleChange}
-            className='project-input'
           />
-        }
-        <button type='submit' className='pal-form-control'>Save Palette & Project</button>
-      </form>
+          <DropdownButton id="dropdown-custom-1" title="Add To Project">
+            <Dropdown.Item className="dropdown-item" onClick={this.newProject}>Add new project</Dropdown.Item>
+            <div className="dropdown-divider"></div>
+            {this.showProjects()}
+          </DropdownButton>
+          { this.state.newProject &&
+            <input 
+              placeholder='Name this project' 
+              name='projectName'
+              className='project-input'
+              value={this.state.projectName}
+              onChange={this.handleChange}
+            />
+          }
+          <button type='submit' className='pal-form-control'>Save palette & project</button>
+        </form>
+      </Modal>
     )
   }
 }

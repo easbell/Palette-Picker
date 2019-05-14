@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './Color.css';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import Button from 'react-bootstrap/Button';
 
 export class Color extends Component {
   constructor() {
@@ -20,10 +23,20 @@ export class Color extends Component {
     const { locked } = this.state;
     return (
       <div style={{backgroundColor: color}} onClick={this.toggleLock} className='color'>
-        { locked 
-          ? <i className="fas fa-lock"></i>
-          : <i className="fas fa-lock-open"></i>
-        }
+        <OverlayTrigger
+          placement={'top'}
+          overlay={
+            <Tooltip id={`tooltip-${'top'}`}>
+              Click to lock color.
+            </Tooltip>
+          }>
+        <Button variant="secondary" className='lock'>
+          { locked 
+            ? <i className="fas fa-lock"></i>
+            : <i className="fas fa-lock-open"></i>
+          }
+        </Button>
+        </OverlayTrigger>
       </div>
     )
   }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { PaletteForm, mapStateToProps, mapDispatchToProps } from './PaletteForm';
-import { handleFetch } from '../thunks/handleFetch';
+import { handleFetch } from '../../thunks/handleFetch';
 import { shallow } from 'enzyme';
 
-jest.mock('../thunks/handleFetch');
+jest.mock('../../thunks/handleFetch');
 
 describe('PaletteForm', () => {
   let wrapper;

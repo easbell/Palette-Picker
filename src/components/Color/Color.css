@@ -4,3 +4,15 @@
   align-items: center;
   justify-content: center;
 }
+
+.lock {
+  background: none;
+  border: 0;
+  outline: 0;
+}
+
+.lock:hover {
+  color: #fff;
+  background: none;
+  border: 0;
+}
