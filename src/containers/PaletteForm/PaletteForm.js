@@ -82,7 +82,7 @@ export class PaletteForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className='palette-form'>
         <input 
           placeholder='Name this palette'
           name='paletteName'
@@ -101,9 +101,10 @@ export class PaletteForm extends Component {
             name='projectName'
             value={this.state.projectName}
             onChange={this.handleChange}
+            className='project-input'
           />
         }
-        <button type='submit'>Save palette & project</button>
+        <button type='submit' className='pal-form-control'>Save Palette & Project</button>
       </form>
     )
   }
