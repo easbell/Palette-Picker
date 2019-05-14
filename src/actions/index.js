@@ -27,3 +27,8 @@ export const setPalettes = (palettes) => ({
   type: 'SET_PALETTES',
   palettes
 });
+
+export const editProject = (project) => ({
+  type: 'EDIT_PROJECT',
+  project
+})

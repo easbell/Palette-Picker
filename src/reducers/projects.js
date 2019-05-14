@@ -4,6 +4,8 @@ const projects = (state=[], action) => {
       return action.projects
     case 'ADD_PROJECT':
       return [...state, action.project]
+    case 'EDIT_PROJECT':
+      return [...state, action.project]
     default:
       return state
   }
