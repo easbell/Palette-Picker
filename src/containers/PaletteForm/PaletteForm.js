@@ -91,10 +91,7 @@ export class PaletteForm extends Component {
 
   render() {
     return (
-      <Modal show={this.props.show} onHide={this.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Save Palette</Modal.Title>
-        </Modal.Header>
+      <Modal show={this.props.show} onHide={this.handleClose} className='modal'>
         <form onSubmit={this.handleSubmit}>
           <input 
             placeholder='Name this palette'
@@ -102,9 +99,8 @@ export class PaletteForm extends Component {
             className='name-input'
             value={this.state.paletteName}
             onChange={this.handleChange}
-            className='project-input'
           />
-          <DropdownButton id="dropdown-basic-button" title="Saved Projects">
+          <DropdownButton id="dropdown-custom-1" title="Add To Project">
             <Dropdown.Item className="dropdown-item" onClick={this.newProject}>Add new project</Dropdown.Item>
             <div className="dropdown-divider"></div>
             {this.showProjects()}
@@ -113,11 +109,12 @@ export class PaletteForm extends Component {
             <input 
               placeholder='Name this project' 
               name='projectName'
+              className='project-input'
               value={this.state.projectName}
               onChange={this.handleChange}
             />
           }
-          <button type='submit'>Save palette & project</button>
+          <button type='submit' className='pal-form-control'>Save palette & project</button>
         </form>
       </Modal>
     )

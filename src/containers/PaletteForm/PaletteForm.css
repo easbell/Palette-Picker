@@ -17,6 +17,12 @@
   margin-bottom: 20px;
 }
 
+.modal {
+  padding: 10px;
+}
+
+.name-input,
+.project-input,
 .pal-form-control,
 #dropdown-custom-1 {
   background: #fff;
@@ -30,7 +36,8 @@
   cursor: pointer;
   text-decoration: none;
   border-radius: 4px;
-  width: 100%;
+  width: 95%;
+  margin: 15px;
 }
 
 #dropdown-custom-1 {
