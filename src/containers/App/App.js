@@ -4,16 +4,25 @@ import Palette from '../../Palette/Palette';
 import { handleFetch } from '../../thunks/handleFetch';
 import { connect } from 'react-redux';
 import { setProjects, setPalettes } from '../../actions';
-import { Route, Switch, Link, NavLink, withRouter } from 'react-router-dom'
-import AllProjects from '../../containers/AllProjects/AllProjects'
-import EditProject from '../EditProject/EditProject'
+import { Route, Switch, Link, NavLink, withRouter } from 'react-router-dom';
+import AllProjects from '../../containers/AllProjects/AllProjects';
+import EditProject from '../EditProject/EditProject';
+import cogoToast from 'cogo-toast';
+
 
 export class App extends Component {
   componentDidMount = () => {
-  const allProjects = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects';
-  const allPalettes = process.env.REACT_APP_BACKEND_URL + 'api/v1/palettes';
-  this.props.handleFetch(allProjects, setProjects)
-  this.props.handleFetch(allPalettes, setPalettes)
+    const allProjects = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects';
+    const allPalettes = process.env.REACT_APP_BACKEND_URL + 'api/v1/palettes';
+    this.props.handleFetch(allProjects, setProjects)
+    this.props.handleFetch(allPalettes, setPalettes)
+    this.checkForErrors();
+  }
+
+  checkForErrors = () => {
+    if(this.props.error.length > 1) {
+      cogoToast.success('Project was added.', {position: 'bottom-left'});
+    }
   }
 
   findProject = ({ match }) => {
@@ -55,17 +64,14 @@ export class App extends Component {
             />
           </Switch>
         </div>
-        
-        <div>
-          {/* save palette */}
-        </div>
       </div>
     )
   }
 }
 
 export const mapStateToProps = (state) => ({
-  projects: state.projects
+  projects: state.projects,
+  error: state.hasErrored
 })
 
 export const mapDispatchToProps = (dispatch) => ({
