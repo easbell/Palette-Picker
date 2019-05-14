@@ -35,7 +35,7 @@ exports[`PaletteForm should match snapshot 1`] = `
       key="1"
       onClick={[Function]}
     >
-      project
+      PROJECT
     </DropdownItem>
     <DropdownItem
       as={[Function]}

@@ -23,16 +23,21 @@ export class PaletteForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    await this.addProject()
-    this.addPalette()
+    const newName = this.state.projectName.toUpperCase()
+    const projectNames = this.props.projects.map(project => project.name)
+    if (projectNames.includes(newName)) {
+      console.log(`${newName} already exists. Please choose another name for your project`)
+    } else {
+      await this.addProject(newName)
+      this.addPalette()
+    }
   }
   
-  addProject = async () => {
-    const { projectName } = this.state;
+  addProject = async (newName) => {
     const url = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects/'
     const optionsObject = {
       method: 'POST',
-      body: JSON.stringify({name: projectName}),
+      body: JSON.stringify({name: newName}),
       headers: { 
         'Content-Type': 'application/json'
       }
