@@ -48,6 +48,7 @@ updateProject = async (id) => {
   }
   await this.props.handleFetch(projectUrl, editProject, optionsObject)
   this.props.handleFetch(url, setProjects)
+  cogoToast.success('Project name was updated', {position: 'bottom-left'})
 }
 
 renderPalettes = () => {
