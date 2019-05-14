@@ -4,6 +4,8 @@ const palettes = (state=[], action) => {
       return action.palettes
     case 'ADD_PALETTE':
       return [...state, action.palette]
+    case 'EDIT_PALETTE':
+      return [...state, action.palette]
     default: 
       return state
   }

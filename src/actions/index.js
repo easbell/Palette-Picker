@@ -32,3 +32,8 @@ export const editProject = (project) => ({
   type: 'EDIT_PROJECT',
   project
 })
+
+export const editPalette = (palette) => ({
+  type: 'EDIT_PALETTE',
+  palette
+})
