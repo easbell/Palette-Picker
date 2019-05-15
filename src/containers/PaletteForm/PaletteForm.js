@@ -100,11 +100,13 @@ export class PaletteForm extends Component {
             value={this.state.paletteName}
             onChange={this.handleChange}
           />
-          <DropdownButton id="dropdown-custom-1" title="Add To Project">
-            <Dropdown.Item className="dropdown-item" onClick={this.newProject}>Add new project</Dropdown.Item>
-            <div className="dropdown-divider"></div>
-            {this.showProjects()}
-          </DropdownButton>
+          { this.state.paletteName.length >= 1 &&
+            <DropdownButton id="dropdown-custom-1" title="Add To Project">
+              <Dropdown.Item className="dropdown-item" onClick={this.newProject}>Add new project</Dropdown.Item>
+              <div className="dropdown-divider"></div>
+              {this.showProjects()}
+            </DropdownButton>
+          }
           { this.state.newProject &&
             <input 
               placeholder='Name this project' 
@@ -114,7 +116,7 @@ export class PaletteForm extends Component {
               onChange={this.handleChange}
             />
           }
-          <button type='submit' className='pal-form-control'>Save</button>
+          <button type='submit' className='pal-form-control disable' disabled={!this.state.paletteName || !this.state.projectName}>Save</button>
         </form>
       </Modal>
     )

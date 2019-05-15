@@ -63,6 +63,9 @@
   font-weight: bold;
 }
 
+.disable:disabled {
+  background-color: #ea4c887a;
+}
 
 #dropdown-custom-1 {
   margin-bottom: 20px;
