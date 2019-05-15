@@ -2,10 +2,11 @@
 
 exports[`PaletteForm should match snapshot 1`] = `
 <Bootstrap(Modal)
-  className="modal"
+  className="modal palette-form"
   onHide={[Function]}
 >
   <form
+    className="form"
     onSubmit={[Function]}
   >
     <input
@@ -15,43 +16,12 @@ exports[`PaletteForm should match snapshot 1`] = `
       placeholder="Name this palette"
       value=""
     />
-    <DropdownButton
-      id="dropdown-custom-1"
-      title="Add To Project"
-    >
-      <DropdownItem
-        as={[Function]}
-        className="dropdown-item"
-        disabled={false}
-        onClick={[Function]}
-      >
-        Add new project
-      </DropdownItem>
-      <div
-        className="dropdown-divider"
-      />
-      <DropdownItem
-        as={[Function]}
-        disabled={false}
-        key="1"
-        onClick={[Function]}
-      >
-        PROJECT
-      </DropdownItem>
-      <DropdownItem
-        as={[Function]}
-        disabled={false}
-        key="2"
-        onClick={[Function]}
-      >
-        project
-      </DropdownItem>
-    </DropdownButton>
     <button
-      className="pal-form-control"
+      className="pal-form-control disable"
+      disabled={true}
       type="submit"
     >
-      Save palette & project
+      Save
     </button>
   </form>
 </Bootstrap(Modal)>
