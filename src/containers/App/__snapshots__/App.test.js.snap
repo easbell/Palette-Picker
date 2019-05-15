@@ -4,19 +4,37 @@ exports[`App should match snapshot 1`] = `
 <div
   className="App"
 >
-  <header>
+  <header
+    className="header"
+  >
     <Link
+      style={
+        Object {
+          "textDecoration": "none",
+        }
+      }
       to="/"
     >
-      <h1>
+      <h1
+        className="logo"
+      >
         Palette Picker
       </h1>
     </Link>
     <NavLink
       exact={true}
+      style={
+        Object {
+          "textDecoration": "none",
+        }
+      }
       to="/my-projects"
     >
-      My Projects
+      <h3
+        className="links"
+      >
+        My Projects
+      </h3>
     </NavLink>
   </header>
   <div>

@@ -1,55 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PaletteForm should match snapshot 1`] = `
-<form
-  onSubmit={[Function]}
+<Bootstrap(Modal)
+  className="modal"
+  onHide={[Function]}
 >
-  <h2>
-    Save Palette
-  </h2>
-  <input
-    className="name-input"
-    name="paletteName"
-    onChange={[Function]}
-    placeholder="Name this palette"
-    value=""
-  />
-  <DropdownButton
-    id="dropdown-basic-button"
-    title="Saved Projects"
+  <form
+    onSubmit={[Function]}
   >
-    <DropdownItem
-      as={[Function]}
-      className="dropdown-item"
-      disabled={false}
-      onClick={[Function]}
-    >
-      Add new project
-    </DropdownItem>
-    <div
-      className="dropdown-divider"
+    <input
+      className="name-input"
+      name="paletteName"
+      onChange={[Function]}
+      placeholder="Name this palette"
+      value=""
     />
-    <DropdownItem
-      as={[Function]}
-      disabled={false}
-      key="1"
-      onClick={[Function]}
+    <DropdownButton
+      id="dropdown-custom-1"
+      title="Add To Project"
     >
-      PROJECT
-    </DropdownItem>
-    <DropdownItem
-      as={[Function]}
-      disabled={false}
-      key="2"
-      onClick={[Function]}
+      <DropdownItem
+        as={[Function]}
+        className="dropdown-item"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Add new project
+      </DropdownItem>
+      <div
+        className="dropdown-divider"
+      />
+      <DropdownItem
+        as={[Function]}
+        disabled={false}
+        key="1"
+        onClick={[Function]}
+      >
+        PROJECT
+      </DropdownItem>
+      <DropdownItem
+        as={[Function]}
+        disabled={false}
+        key="2"
+        onClick={[Function]}
+      >
+        project
+      </DropdownItem>
+    </DropdownButton>
+    <button
+      className="pal-form-control"
+      type="submit"
     >
-      project
-    </DropdownItem>
-  </DropdownButton>
-  <button
-    type="submit"
-  >
-    Save palette & project
-  </button>
-</form>
+      Save palette & project
+    </button>
+  </form>
+</Bootstrap(Modal)>
 `;

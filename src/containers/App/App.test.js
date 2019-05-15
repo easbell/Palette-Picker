@@ -8,18 +8,19 @@ jest.mock('../../thunks/handleFetch');
 describe('App', () => {
   let wrapper;
   let mockFn;
+  let mockError;
 
   beforeEach(() => {
     mockFn = jest.fn()
-    wrapper = shallow(<App handleFetch={mockFn} error={''}/>)
+    mockError = ''
+    wrapper = shallow(<App handleFetch={mockFn} error={mockError}/>)
   });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call handleFetch twice upon componentDidMount', () => {
-    wrapper = shallow(<App handleFetch={mockFn}/>)
+  it('should call handleFetch upon componentDidMount', () => {
     wrapper.instance().componentDidMount();
 
     expect(mockFn).toHaveBeenCalled();

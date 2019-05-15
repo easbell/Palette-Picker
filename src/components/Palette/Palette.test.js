@@ -11,14 +11,27 @@ describe('Palette', () => {
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
-
-  it.skip('should set state with updated colors when setColors is called', () => {
-    // wrapper.instance().componentDidMount();
-    expect(wrapper.instance().setState).toHaveBeenCalled();
+  
+  it('should update state when lockColor is called', () => {
+    wrapper.setState({
+      color1: {color: '#ffffff', locked: false},
+      color2: {color: '', locked: false},
+      color3: {color: '', locked: false},
+      color4: {color: '', locked: false},
+      color5: {color: '', locked: false},
+      showForm: false
+    })
+    wrapper.instance().lockColor('#ffffff');
+    expect(wrapper.state('color1')).toEqual({color: '#ffffff', locked: true})
   });
 
-  it('should set state when save palette is called', () => {
+  it('should set state when savePalette is called', () => {
     wrapper.find('.save').simulate('click', true);
     expect(wrapper.state('showForm')).toBe(true);
+  });
+
+  it('should update state when hideModal is called', () => {
+    wrapper.instance().hideModal();
+    expect(wrapper.state('showForm')).toBe(false);
   });
 });
