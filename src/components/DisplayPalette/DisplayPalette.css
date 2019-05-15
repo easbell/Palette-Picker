@@ -28,6 +28,17 @@
 
 .palette-name {
   font-size: 1rem;
+  border: none;
+  color: #444
+}
+
+h3 {
+  margin: 0px;
+  padding-top: 5px;
+}
+
+.palette-name:focus {
+  outline: none;
 }
 
 .display-colors {
