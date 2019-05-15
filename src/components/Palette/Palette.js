@@ -42,7 +42,7 @@ export class Palette extends Component {
     const colors = stateKeys.splice(0, stateKeys.length - 1)
     return colors.map((color, i) => {
       const hexCode = this.state[color].color
-      return <Color key={i} lockColor={this.lockColor} color={hexCode} savePalette={this.savePalette}/>
+      return <Color key={i} lockColor={this.lockColor} color={hexCode}/>
     })
   }
 
@@ -58,12 +58,8 @@ export class Palette extends Component {
     )
   }
 
-  savePalette = (bool) => {
+  showForm = (bool) => {
     this.setState({ showForm: bool })
-  }
-
-  hideModal = () => {
-    this.setState({ showForm: false })
   }
 
   render() {
@@ -73,10 +69,10 @@ export class Palette extends Component {
         <div className='palette'>
           {this.renderColors()}
         </div>
-        <button onClick={() => this.savePalette(true)} className='save controls'>Save Palette</button>
+        <button onClick={() => this.showForm(true)} className='save controls'>Save Palette</button>
         <button onClick={this.setColors} className='controls'>New Palette</button>
         {showForm &&
-          <PaletteForm show={this.state.showForm} hideModal={this.hideModal} savePalette={this.savePalette} colors={{...this.state}}/>
+          <PaletteForm show={this.state.showForm} hideModal={this.hideModal} showForm={this.showForm} colors={{...this.state}}/>
         }
       </div>
     )

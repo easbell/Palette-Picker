@@ -69,7 +69,7 @@ export class PaletteForm extends Component {
       }
     }
     await this.props.handleFetch(url, addPalette, optionsObject)
-    this.props.savePalette(false);
+    this.props.showForm(false);
     this.props.handleFetch(allPalettesUrl, setPalettes);
     cogoToast.success('Palette was added.', {position: 'bottom-left'});
   }
@@ -86,7 +86,7 @@ export class PaletteForm extends Component {
   }
   
   handleClose = () => {
-    this.props.hideModal();
+    this.props.showForm(false);
   }
 
   render() {
