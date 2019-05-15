@@ -3,15 +3,17 @@
 exports[`EditPalette should match the snapshot 1`] = `
 <div
   className="edit-palette-card"
+  onBlur={[Function]}
 >
   <div
     className="palette-card edit-palette"
   >
-    <h3
+    <input
       className="palette-name"
-    >
-      my palette
-    </h3>
+      name="paletteName"
+      onChange={[Function]}
+      value="my palette"
+    />
     <div
       className="display-colors"
     >
