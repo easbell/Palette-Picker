@@ -24,7 +24,7 @@ describe('PaletteForm', () => {
 
     wrapper = shallow(
       <PaletteForm 
-        savePalette={mockFn}
+        showForm={mockFn}
         handleFetch={mockFn}
         projects={mockProjects}
         colors={mockColors}
@@ -61,12 +61,13 @@ describe('PaletteForm', () => {
     expect(mockFn).toHaveBeenCalledTimes(2);
   });
 
-  it('should dispatch savePalette and handleFetch when addPalette is invoked', async () => {
+  it('should dispatch showForm and handleFetch when addPalette is invoked', async () => {
     await wrapper.instance().addPalette(3);
     expect(mockFn).toHaveBeenCalledTimes(3);
   });
 
   it('should update state when newProject is called', () => {
+    wrapper.setState({ paletteName: 'name' })
     wrapper.find('.dropdown-item').simulate('click');
     expect(wrapper.state('newProject')).toBe(true);
   });

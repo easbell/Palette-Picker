@@ -30,8 +30,4 @@ describe('Palette', () => {
     expect(wrapper.state('showForm')).toBe(true);
   });
 
-  it('should update state when hideModal is called', () => {
-    wrapper.instance().hideModal();
-    expect(wrapper.state('showForm')).toBe(false);
-  });
 });
