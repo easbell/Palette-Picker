@@ -91,8 +91,8 @@ export class PaletteForm extends Component {
 
   render() {
     return (
-      <Modal show={this.props.show} onHide={this.handleClose} className='modal'>
-        <form onSubmit={this.handleSubmit}>
+      <Modal show={this.props.show} onHide={this.handleClose} className='modal palette-form'>
+        <form onSubmit={this.handleSubmit} className='form'>
           <input 
             placeholder='Name this palette'
             name='paletteName'
@@ -114,7 +114,7 @@ export class PaletteForm extends Component {
               onChange={this.handleChange}
             />
           }
-          <button type='submit' className='pal-form-control'>Save palette & project</button>
+          <button type='submit' className='pal-form-control'>Save</button>
         </form>
       </Modal>
     )
