@@ -10,8 +10,34 @@ exports[`Color should match snapshot 1`] = `
     }
   }
 >
-  <i
-    className="fas fa-lock-open"
-  />
+  <OverlayTrigger
+    defaultOverlayShown={false}
+    overlay={
+      <ForwardRef(render)
+        id="tooltip-top"
+      >
+        Click to lock color.
+      </ForwardRef(render)>
+    }
+    placement="top"
+    trigger={
+      Array [
+        "hover",
+        "focus",
+      ]
+    }
+  >
+    <Button
+      active={false}
+      className="lock"
+      disabled={false}
+      type="button"
+      variant="secondary"
+    >
+      <i
+        className="fas fa-lock-open"
+      />
+    </Button>
+  </OverlayTrigger>
 </div>
 `;

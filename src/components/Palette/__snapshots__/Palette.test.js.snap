@@ -2,50 +2,51 @@
 
 exports[`Palette should match snapshot 1`] = `
 <div>
-  <button
-    className="save"
-    onClick={[Function]}
-  >
-    Save Palette
-  </button>
-  <button
-    onClick={[Function]}
-  >
-    New Palette
-  </button>
   <div
     className="palette"
   >
     <Color
-      color="#3CC839"
+      color="#DFB95F"
       key="0"
       lockColor={[Function]}
       savePalette={[Function]}
     />
     <Color
-      color="#FAEC0B"
+      color="#A22355"
       key="1"
       lockColor={[Function]}
       savePalette={[Function]}
     />
     <Color
-      color="#038907"
+      color="#5AFBCB"
       key="2"
       lockColor={[Function]}
       savePalette={[Function]}
     />
     <Color
-      color="#339BD7"
+      color="#AE4547"
       key="3"
       lockColor={[Function]}
       savePalette={[Function]}
     />
     <Color
-      color="#E84946"
+      color="#EB7531"
       key="4"
       lockColor={[Function]}
       savePalette={[Function]}
     />
   </div>
+  <button
+    className="save controls"
+    onClick={[Function]}
+  >
+    Save Palette
+  </button>
+  <button
+    className="controls"
+    onClick={[Function]}
+  >
+    New Palette
+  </button>
 </div>
 `;

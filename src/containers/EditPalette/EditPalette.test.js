@@ -51,7 +51,7 @@ describe('EditPalette', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it('calls dispatch with a setPaletts action', () => {
+    it('calls dispatch with a setPalettes action', () => {
       const mockDispatch = jest.fn()
       const mockPalettes = ['palettes']
       const actionToDispatch = setPalettes(mockPalettes)

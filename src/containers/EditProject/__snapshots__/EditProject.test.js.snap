@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditProject should match snapshot 1`] = `
+<form
+  className="project-card edit-project-card"
+  onSubmit={[Function]}
+>
+  <input
+    className="project-name"
+    name="projectName"
+    onChange={[Function]}
+    value="name"
+  />
+  <ConnectFunction
+    key="1"
+    palette={
+      Object {
+        "id": 1,
+        "project_id": 1,
+      }
+    }
+  />
+  <div
+    className="delete-btn-container"
+  >
+    <button
+      className="delete-project"
+      type="submit"
+    >
+      Save
+    </button>
+    <button
+      className="delete-project delete"
+      onClick={[Function]}
+    >
+      Delete Project
+    </button>
+  </div>
+</form>
+`;
