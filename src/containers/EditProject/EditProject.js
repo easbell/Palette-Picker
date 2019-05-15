@@ -82,10 +82,10 @@ render() {
       />
       {this.renderPalettes()}
       <div className='delete-btn-container'>
-        <button className='delete-project' type='submit'>
+        <button className='update-project' type='submit'>
           Save
         </button>
-        <button className='delete-project delete' onClick={() => this.deleteProject(this.props.foundProject.id)}>
+        <button className='update-project delete' onClick={() => this.deleteProject(this.props.foundProject.id)}>
           Delete Project
         </button>
       </div>
