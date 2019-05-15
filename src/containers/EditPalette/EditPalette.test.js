@@ -1,7 +1,8 @@
 import React from 'react'
 import { EditPalette, mapStateToProps, mapDispatchToProps } from './EditPalette'
 import { shallow } from 'enzyme'
-import { setPalettes } from '../../actions'
+import { handleFetch } from '../../thunks/handleFetch'
+import { handleDelete } from '../../thunks/handleDelete'
 
 describe('EditPalette', () => {
   let wrapper
@@ -15,26 +16,45 @@ describe('EditPalette', () => {
     color_5: 'red'
   }
 
+  let mockPalettes = [{id: 1}, {id: 2}]
+
+  let mockProps = {
+    palette: mockPalette,
+    palettes: mockPalettes,
+    handleDelete: jest.fn(),
+    handleFetch: jest.fn()
+  }
+  
+  beforeEach(() => {
+    wrapper = shallow(<EditPalette {...mockProps} />)
+  })
+
   it('should match the snapshot', () => {
-    wrapper = shallow(<EditPalette palette={mockPalette} />)
     expect(wrapper).toMatchSnapshot()
   })
 
-  describe('deletePalette', () => {
+  it('should update state on change of palette name', () => {
+    const mockEvent = { target: { name: 'paletteName', value: 'change'} }
+    wrapper.find('.palette-name').simulate('change', mockEvent);
+    expect(wrapper.state('paletteName')).toBe('change');
+  });
 
-    it.skip('should dispatch setPalettes with the updated palettes', () => {
-      wrapper = shallow(<EditPalette 
-        palette={mockPalette} 
-        setPalettes={jest.fn()}
-        palettes = {[{id: 1}, {id: 2}]}
-        />
-      )
+  it('should call handleFetch on blur', async () => {
+    await wrapper.instance().handleBlur()
+    expect(wrapper.instance().props.handleFetch).toHaveBeenCalled();
+  });
 
-      wrapper.find('.delete-palette').simulate('click')
-      
-      expect(wrapper.props.setPalettes).toHaveBeenCalled()
-    })
+  it('should call deletePalette when delete-palette is clicked', () => {
+    const deletePaletteSpy = jest.spyOn(wrapper.instance(), 'deletePalette')
+    wrapper.find('.delete-palette').simulate('click')
+    expect(deletePaletteSpy).toHaveBeenCalled()
   })
+
+  it('should call handleDelete when deletePalette is called', () => {
+    wrapper.instance().deletePalette()
+    expect(wrapper.instance().props.handleDelete).toHaveBeenCalled()
+  })
+
 
   describe('mapStateToProps', () => {
     it('returns correct props', () => {
@@ -50,16 +70,23 @@ describe('EditPalette', () => {
     });
   });
 
-  describe('mapDispatchToProps', () => {
-    it('calls dispatch with a setPalettes action', () => {
-      const mockDispatch = jest.fn()
-      const mockPalettes = ['palettes']
-      const actionToDispatch = setPalettes(mockPalettes)
+  describe.skip('mapDispatchToProps', () => {
+    it('calls dispatch with handleFetch action', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = handleFetch();
+      const mappedProps = mapDispatchToProps(mockDispatch);
 
-      const mappedProps = mapDispatchToProps(mockDispatch)
-      mappedProps.setPalettes(mockPalettes)
+      mappedProps.handleFetch();
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-    })
+    it('calls dispatch with handleDelete action', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = handleDelete();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.handleDelete();
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
   })
 })

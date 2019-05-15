@@ -19,7 +19,8 @@ describe('EditProject', () => {
         projects={[{name: 'name'}, {name: 'other'}]}
         palettes={mockPalettes}
         handleDelete={mockFn}
-        handleFetch={mockFn}/>
+        handleFetch={mockFn}
+        history={[]}/>
     )
     mockEvent = { target: {name: 'projectName', value: 'name' } }
   });
@@ -33,31 +34,20 @@ describe('EditProject', () => {
     expect(wrapper.state('projectName')).toBe('name');
   });
 
-  it.skip('should invoke updateProject upon submit', () => {
-    mockEvent = { target: {name: 'projectName', value: 'NEW', preventDefault: () => {} }}
-    wrapper.find('.edit-project-card').simulate('submit', mockEvent);
+  it('should invoke updateProject upon submit', () => {
     const spy = jest.spyOn(wrapper.instance(), 'updateProject');
+    wrapper.find('.edit-project-card').simulate('submit', {preventDefault: () => {} })
     expect(spy).toHaveBeenCalled();
   });
 
-  it.skip('should invoke updateProject when handleSubmit is invoked', () => {
-    wrapper.setState({ projectName: 'name'});
-    wrapper.find('.edit-project-card').simulate('submit', { preventDefault: () => {}});
-
-    const spy = jest.spyOn(wrapper.instance(), 'updateProject');
-    expect(spy).toHaveBeenCalled();
+  it('should dispatch handleFetch when updateProject is invoked', async () => {
+    await wrapper.instance().updateProject();
+    expect(wrapper.instance().props.handleFetch).toHaveBeenCalled();
   });
 
-  it.skip('should invoke renderPalettes upon component mounting', () => {
-    wrapper.instance()
-    const spy = jest.spyOn(wrapper.instance(), 'renderPalettes');
-    expect(spy).toHaveBeenCalled();
-  });
-
-  it.skip('should dispatch handleDelete when deleteProject is invoked', async () => {
-    wrapper.instance().deleteProject(wrapper.instance().props.foundProject.id)
-    // await wrapper.find('.delete').simulate('click');
-    expect(mockFn).toHaveBeenCalledTimes(2);
+  it('should dispatch handleDelete when deleteProject is invoked', async () => {
+    await wrapper.instance().deleteProject()
+    expect(wrapper.instance().props.handleDelete).toHaveBeenCalled();
   });
   
   describe('mapStateToProps', () => {
@@ -80,7 +70,6 @@ describe('EditProject', () => {
   describe('mapDispatchToProps', () => {
     it('calls dispatch with handleFetch action', () => {
       const mockDispatch = jest.fn();
-      // const actionToDispatch = handleFetch();
       const mappedProps = mapDispatchToProps(mockDispatch);
 
       mappedProps.handleFetch();
