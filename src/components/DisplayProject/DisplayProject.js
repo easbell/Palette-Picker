@@ -13,14 +13,14 @@ export const DisplayProject = (props) => {
     })
 
     return(
-      <div className='project-card'>
-        <Link to={`/my-projects/${id}`} style={{ textDecoration: 'none' }}>
-          <h2 className='project-name'>
-            {name}
-          </h2>
-          {palettes}
-        </Link>
-      </div>
+      <Link to={`/my-projects/${id}`} style={{ textDecoration: 'none' }}>
+        <div className='project-card'>
+            <h2 className='project-name'>
+              {name}
+            </h2>
+            {palettes}
+        </div>
+      </Link>
     )
 }
 

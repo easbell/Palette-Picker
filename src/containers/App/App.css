@@ -18,6 +18,10 @@
   margin: 0px;
 }
 
+.logo:hover {
+  color: #ea4c88;
+}
+
 .links {
   color: #999;
   font-size: 1rem;
