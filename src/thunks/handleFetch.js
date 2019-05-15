@@ -9,7 +9,6 @@ export const handleFetch = (url, action, options) => {
         throw Error(response.statusText)
       }
       const data = await response.json()
-      console.log(data)
       dispatch(isLoading(false))
       dispatch(action(data))
       return data
