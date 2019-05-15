@@ -95,5 +95,14 @@ describe('PaletteForm', () => {
       mappedProps.handleFetch();
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
+
+    it('calls dispatch with handleFetch action', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = handleFetch();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.handleFetch();
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
   });
 });
