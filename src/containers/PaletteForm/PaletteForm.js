@@ -23,14 +23,14 @@ export class PaletteForm extends Component {
     this.setState({ [name]: value })
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const newName = this.state.projectName.toUpperCase()
     const projectNames = this.props.projects.map(project => project.name)
     if (projectNames.includes(newName)) {
       cogoToast.warn(`${newName} already exists. Please choose another name for your project`, {position: 'bottom-left'})
     } else {
-      await this.addProject(newName)
+      this.addProject(newName)
     }
   }
   

@@ -14,8 +14,8 @@ export class App extends Component {
   componentDidMount = () => {
     const allProjects = process.env.REACT_APP_BACKEND_URL + 'api/v1/projects';
     const allPalettes = process.env.REACT_APP_BACKEND_URL + 'api/v1/palettes';
-    this.props.handleFetch(allProjects, setProjects)
-    this.props.handleFetch(allPalettes, setPalettes)
+    this.props.handleFetch(allProjects, setProjects);
+    this.props.handleFetch(allPalettes, setPalettes);
     this.checkForErrors();
   }
 

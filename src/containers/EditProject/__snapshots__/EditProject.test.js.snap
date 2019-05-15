@@ -7,7 +7,6 @@ exports[`EditProject should match snapshot 1`] = `
 >
   <input
     className="project-name"
-    name="projectName"
     onChange={[Function]}
     value="name"
   />
@@ -24,13 +23,13 @@ exports[`EditProject should match snapshot 1`] = `
     className="delete-btn-container"
   >
     <button
-      className="delete-project"
+      className="update-project"
       type="submit"
     >
       Save
     </button>
     <button
-      className="delete-project delete"
+      className="update-project delete"
       onClick={[Function]}
     >
       Delete Project

@@ -1,8 +1,6 @@
 import React from 'react'
 import { EditPalette, mapStateToProps, mapDispatchToProps } from './EditPalette'
 import { shallow } from 'enzyme'
-import { handleFetch } from '../../thunks/handleFetch'
-import { handleDelete } from '../../thunks/handleDelete'
 
 describe('EditPalette', () => {
   let wrapper
@@ -70,23 +68,14 @@ describe('EditPalette', () => {
     });
   });
 
-  describe.skip('mapDispatchToProps', () => {
-    it('calls dispatch with handleFetch action', () => {
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch with handleFetch and handleDelete action', () => {
       const mockDispatch = jest.fn();
-      const actionToDispatch = handleFetch();
       const mappedProps = mapDispatchToProps(mockDispatch);
 
       mappedProps.handleFetch();
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-    });
-
-    it('calls dispatch with handleDelete action', () => {
-      const mockDispatch = jest.fn();
-      const actionToDispatch = handleDelete();
-      const mappedProps = mapDispatchToProps(mockDispatch);
-
       mappedProps.handleDelete();
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+      expect(mockDispatch).toHaveBeenCalledTimes(2);
     });
   })
 })
