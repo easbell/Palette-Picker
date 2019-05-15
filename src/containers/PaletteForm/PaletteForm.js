@@ -114,7 +114,7 @@ export class PaletteForm extends Component {
               onChange={this.handleChange}
             />
           }
-          <button type='submit' className='pal-form-control'>Save</button>
+          <button type='submit' className='pal-form-control disable' disabled={!this.state.paletteName || !this.state.projectName}>Save</button>
         </form>
       </Modal>
     )
