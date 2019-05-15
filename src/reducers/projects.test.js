@@ -23,4 +23,13 @@ describe('projects', () => {
     const result = projects(mockState, mockAction)
     expect(result).toEqual(expected)
   })
+
+  it('should return all of the projects, including the newly added project, if the type is EDIT_PROJECT', () => {
+    const mockState = [{ name: 'my project' }, { name: 'my other project' }]
+    const mockNewProject = { name: 'my new project' }
+    const mockAction = actions.editProject(mockNewProject)
+    const expected = [{ name: 'my project' }, { name: 'my other project' }, { name: 'my new project' }]
+    const result = projects(mockState, mockAction)
+    expect(result).toEqual(expected)
+  })
 })
