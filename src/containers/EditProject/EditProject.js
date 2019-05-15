@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../../components/DisplayProject/DisplayProject.css';
 import EditPalette from '../EditPalette/EditPalette';
-import { setProjects, setPalettes, editProject } from '../../actions';
+import { setProjects, editProject } from '../../actions';
 import { handleDelete } from '../../thunks/handleDelete';
 import { handleFetch } from '../../thunks/handleFetch';
 import { withRouter } from 'react-router-dom';
@@ -17,8 +17,8 @@ export class EditProject extends Component {
   }
 
 handleChange = (e) => {
-  const { name, value } = e.target
-  this.setState({ [name]: value })
+  const { value } = e.target
+  this.setState({ projectName: value })
 }
 
 handleSubmit =  (e) => {
@@ -67,8 +67,6 @@ deleteProject = async (id) => {
   const url = process.env.REACT_APP_BACKEND_URL + `api/v1/projects/${id}`
   await this.props.handleDelete(url, setProjects, updatedProjects, id)
   cogoToast.success('Project was deleted.', {position: 'bottom-left'});
-  const allPalettes = process.env.REACT_APP_BACKEND_URL + 'api/v1/palettes';
-  this.props.handleFetch(allPalettes, setPalettes)
 }
 
 render() {
@@ -76,7 +74,6 @@ render() {
     <form className='project-card edit-project-card' onSubmit={this.handleSubmit}>
       <input 
         className='project-name' 
-        name='projectName'
         value={this.state.projectName}
         onChange={this.handleChange}
       />

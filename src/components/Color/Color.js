@@ -13,9 +13,9 @@ export class Color extends Component {
   }
 
   toggleLock = () => {
-    const { lockColor, color, index } = this.props;
+    const { lockColor, color } = this.props;
     this.setState({ locked: !this.state.locked })
-    lockColor(color, index)
+    lockColor(color)
   }
 
   render() {

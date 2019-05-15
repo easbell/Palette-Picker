@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DisplayProject should match the snapshot 1`] = `
-<div
-  className="project-card"
->
-  <Link
-    style={
-      Object {
-        "textDecoration": "none",
-      }
+<Link
+  style={
+    Object {
+      "textDecoration": "none",
     }
-    to="/my-projects/1"
+  }
+  to="/my-projects/1"
+>
+  <div
+    className="project-card"
   >
     <h2
       className="project-name"
@@ -26,6 +26,6 @@ exports[`DisplayProject should match the snapshot 1`] = `
         }
       }
     />
-  </Link>
-</div>
+  </div>
+</Link>
 `;

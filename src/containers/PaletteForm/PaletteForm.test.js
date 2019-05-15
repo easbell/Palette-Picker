@@ -72,6 +72,11 @@ describe('PaletteForm', () => {
     expect(wrapper.state('newProject')).toBe(true);
   });
 
+  it('should call showForm when handleClose is invoked', () => {
+    wrapper.instance().handleClose()
+    expect(mockFn).toHaveBeenCalledWith(false)
+  })
+
   describe('mapStateToProps', () => {
     it('returns correct props', () => {
       const mockState = {
