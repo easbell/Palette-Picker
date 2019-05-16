@@ -1,6 +1,6 @@
 # Palette Picker
 
-Palette Picker is a web application that allows users to generate random color palettes, save palettes to projects they create, and edit/delete saved palettes and projects. On the backend it uses a Postgres database and RESTful API design. [Visit the live site](https://palette-picker-ui.herokuapp.com/)
+Palette Picker is a web application that allows users to generate random color palettes, save palettes to projects they create, and edit/delete saved palettes and projects. On the backend it uses a Postgres database and RESTful API design. [Visit the live site.](https://palette-picker-ui.herokuapp.com/)
 
 ### Set Up
 - `git clone` this repo
