@@ -3,6 +3,7 @@ import './Color.css';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types'
 
 export class Color extends Component {
   constructor() {
@@ -40,6 +41,11 @@ export class Color extends Component {
       </div>
     )
   }
+}
+
+Color.propTypes = {
+  color: PropTypes.string,
+  lockColor: PropTypes.func,
 }
 
 export default Color;

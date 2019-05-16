@@ -7,6 +7,7 @@ import { handleDelete } from '../../thunks/handleDelete';
 import { handleFetch } from '../../thunks/handleFetch';
 import { withRouter } from 'react-router-dom';
 import cogoToast from 'cogo-toast';
+import PropTypes from 'prop-types'
 
 export class EditProject extends Component {
   constructor(props) {
@@ -100,5 +101,13 @@ export const mapDispatchToProps = (dispatch) => ({
   handleDelete: (url, action, items, id) => dispatch(handleDelete(url, action, items, id)),
   handleFetch: (url, action, options) => dispatch(handleFetch(url, action, options))
 })
+
+EditProject.propTypes = {
+  palettes: PropTypes.array,
+  projects: PropTypes.array,
+  handleDelete: PropTypes.func,
+  handleFetch: PropTypes.func,
+  foundProject: PropTypes.object,
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditProject))

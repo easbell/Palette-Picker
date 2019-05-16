@@ -9,6 +9,7 @@ import AllProjects from '../AllProjects/AllProjects';
 import EditProject from '../EditProject/EditProject';
 import { PageNotFound } from '../../components/PageNotFound/PageNotFound';
 import cogoToast from 'cogo-toast';
+import PropTypes from 'prop-types'
 
 export class App extends Component {
   componentDidMount = () => {
@@ -72,5 +73,11 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   handleFetch: (url, action) => dispatch(handleFetch(url, action))
 })
+
+App.propTypes = {
+  projects: PropTypes.array,
+  error: PropTypes.string,
+  handleFetch: PropTypes.func
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

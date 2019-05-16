@@ -7,6 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Modal from 'react-bootstrap/Modal'
 import './PaletteForm.css';
 import cogoToast from 'cogo-toast';
+import PropTypes from 'prop-types';
 
 export class PaletteForm extends Component {
   constructor() {
@@ -130,5 +131,12 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   handleFetch: (url, action, options) => dispatch(handleFetch(url, action, options))
 })
+
+PaletteForm.propTypes = {
+  projects: PropTypes.array,
+  handleFetch: PropTypes.func,
+  showForm: PropTypes.func,
+  colors: PropTypes.object,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaletteForm)
