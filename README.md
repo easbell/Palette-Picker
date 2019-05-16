@@ -3,8 +3,8 @@
 ## [Live Site](https://palette-picker-ui.herokuapp.com/)
 
 ## Collaborators
-[Elizabeth Asbell](https://github.com/easbell)
-[Taylor Sperry](https://github.com/taylorsperry)
+- [Elizabeth Asbell](https://github.com/easbell)
+- [Taylor Sperry](https://github.com/taylorsperry)
 
 ### Set Up
 - `git clone` this repo
