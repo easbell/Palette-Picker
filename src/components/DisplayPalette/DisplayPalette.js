@@ -1,5 +1,6 @@
 import React from 'react'
 import './DisplayPalette.css'
+import PropTypes from 'prop-types'
 
 export const DisplayPalette = ({palette}) => {
     const { palette_name, color_1, color_2, color_3, color_4, color_5 } = palette
@@ -18,6 +19,10 @@ export const DisplayPalette = ({palette}) => {
         </div>
       </div>
     )
+}
+
+DisplayPalette.propTypes = {
+  palette: PropTypes.object,
 }
 
 export default DisplayPalette

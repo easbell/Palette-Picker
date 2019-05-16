@@ -5,6 +5,7 @@ import { setPalettes, editPalette } from '../../actions';
 import { handleDelete } from '../../thunks/handleDelete';
 import { handleFetch } from '../../thunks/handleFetch'
 import cogoToast from 'cogo-toast';
+import PropTypes from 'prop-types'
 
 export class EditPalette extends Component {
   constructor(props) {
@@ -85,5 +86,11 @@ export const mapDispatchToProps = (dispatch) => ({
   handleFetch: (url, action, options) => dispatch(handleFetch(url, action, options))
 })
 
+EditPalette.propTypes = {
+  palettes: PropTypes.array,
+  handleDelete: PropTypes.func,
+  handleFetch: PropTypes.func,
+  palette: PropTypes.object
+}
 export default connect(mapStateToProps, mapDispatchToProps)(EditPalette)
 

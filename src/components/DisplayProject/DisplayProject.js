@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import './DisplayProject.css'
 import DisplayPalette from '../DisplayPalette/DisplayPalette'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 export const DisplayProject = (props) => {
     const { name, id } = props.project
@@ -27,5 +28,10 @@ export const DisplayProject = (props) => {
 export const mapStateToProps = (state) => ({
   palettes: state.palettes
 })
+
+DisplayProject.propTypes = {
+  project: PropTypes.object,
+  palettes: PropTypes.array
+}
 
 export default connect(mapStateToProps)(DisplayProject)
